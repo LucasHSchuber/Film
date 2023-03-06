@@ -18,7 +18,7 @@ include("includes/config.php");
         <?php
 
         if (isset($_SESSION['username'])) {
-            include("includes/nav_loggedin2.php");
+            include("includes/nav_loggedin.php");
         } else {
             include("includes/nav.php");
         }

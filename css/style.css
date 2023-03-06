@@ -621,7 +621,11 @@ picture img {
 }
 
 
-@media only screen and (max-width: 992px) and (min-width: 772px) {}
+@media only screen and (max-width: 992px) and (min-width: 772px) {
+
+
+
+}
 
 @media screen and (max-width: 772px) {
 
@@ -699,3 +703,4 @@ picture img {
 }
 
 @media screen and (max-width: 500px) {}
+
