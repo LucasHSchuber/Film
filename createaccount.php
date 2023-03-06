@@ -7,9 +7,6 @@ include("includes/config.php");
 <?php
 include("includes/head.php");
 ?>
-<?php
-include("includes/head.php");
-?>
 
 <head>
     <title>login</title>
