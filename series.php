@@ -53,12 +53,17 @@ include("includes/config.php");
                         <option value="">Thriller</option>
                     </select>
                 </div>
-                <ol class="grid-box-films">
-                    <li>Blog1</li>
-                    <li>Blog2</li>
-                    <li>Blog3</li>
-                    <li>Blog4</li>
-                    <li>Blog5</li>
+                <ol class="grid-box-films" style="list-style-type:none;">
+                    <a style='font-size:1.4em !important;'>Profiler:</a>
+                    <?php
+                    $newpost = new Newpost();
+
+                    $blogs = $newpost->printUsers();
+                    
+                    foreach ($blogs as $users){
+                        echo "<li > <a class='link' style='text-decoration:underline;' href='user.php?username=" . $users['username'] .  "'>" . $users['username'] . "</a></li>";
+                    }
+                    ?>
                 </ol>
             </section>
 

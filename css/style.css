@@ -542,6 +542,33 @@ picture img {
 
 
 
+/* profile */
+.profile{
+    color:white;
+    width: 80%;
+    margin:auto;
+}
+.profile h1{
+    font-size: 4em;
+}
+.profile h2{
+    font-size: 1.2em;
+    margin-top:2em;
+}
+.profile p{
+    font-size: 1.2em;
+}
+.hr{
+    border: 0.5px solid white !important;
+    margin: 5em 0;
+}
+
+
+
+
+
+
+
 
 @media screen and (min-width: 992px) {}
 

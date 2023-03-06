@@ -164,7 +164,15 @@ class Newuser
         }
     }
 
-    //print user
+    //login user
+    public function getUserInfo(string $username)
+    {
+        $sql = "SELECT * FROM users WHERE username='$username';";
+        $result = $this->db->query($sql);
+        return mysqli_fetch_assoc($result); //returnerar endast en rad istället för en hel array
+
+    }
+
 
 
     //destructor

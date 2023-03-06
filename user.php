@@ -28,12 +28,32 @@ include("includes/config.php");
 
         <div class="wrapper">
 
+            <?php
+            //instans
+            $newuser = new Newuser();
+            $username = $_GET['username'];
+            //lagrar info från användaren i $info
+            $info = $newuser->getUserInfo($username);
+
+            //instans
+            $newpost = new Newpost();
+            $posts = $newpost->getPostsAmount($username);
+
+            ?>
+
+            <section class="profile">
+                <h1><?= $info['username'] ?></h1>
+                <h2><?= $info['firstname'] . " " . $info['lastname'] ?></h2>
+                <p>Antal inlägg: <?= $posts["COUNT(username)"] ?></p>
+                <hr class="hr">
+            </section>
+
+
             <section class="info-post">
 
                 <?php
 
-                $newpost = new Newpost();
-
+            
                 if (isset($_GET['username'])) {
                     $username = $_GET['username'];
 

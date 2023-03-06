@@ -157,6 +157,13 @@ class Newpost
         return mysqli_fetch_all($result, MYSQLI_ASSOC); // lagrar i associativ array så det blir lättare att skriva ut på sidan
     }
 
+    // gets amount of posts
+      public function getPostsAmount($username)
+    {
+        $sql = "SELECT COUNT(username)FROM posts WHERE username='$username';";
+        $result = $this->db->query($sql); //lagrar svaret från servern i $result
+        return mysqli_fetch_assoc($result); //returnerar endast en rad istället för en hel array
+    }
 
 
 
