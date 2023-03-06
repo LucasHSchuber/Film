@@ -50,7 +50,7 @@ include("includes/config.php");
                         <option value="">Komedi</option>
                         <option value="">Romantik</option>
                         <option value="">Skräck</option>
-                        <option value="">Thrilledr</option>
+                        <option value="">Thriller</option>
                     </select>
                 </div>
                 <ol class="grid-box-films">
