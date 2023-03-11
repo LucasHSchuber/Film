@@ -156,7 +156,7 @@ class Newuser
         $info = mysqli_fetch_assoc($result); //returnerar endast en rad istället för en hel array
 
         if ($info['username'] == $username && $info['memory'] == $memory ) {
-
+            $_SESSION['changepassword'] = $username;
             header("location:changepassword.php");
             return true;
         } else {
@@ -177,13 +177,14 @@ class Newuser
 
 
     // match memory for change of password
-    public function changePassword($password, $repeatpassword, $username) : bool
+    public function changePassword($password, $repeatpassword) : bool
     {
 
         $password =  $this->db->real_escape_string($password);
         $repeatpassword =  $this->db->real_escape_string($repeatpassword);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
+        $username = $_SESSION['changepassword'];
+        
         if ($password == $repeatpassword) {
             $sql = "UPDATE users SET password = '$hashed_password' WHERE username = '$username';";
             $this->db->query($sql);

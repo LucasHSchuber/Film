@@ -1,7 +1,11 @@
 <?php
 include("includes/config.php");
 ?>
-
+<?php
+if (!isset($_SESSION['changepassword'])) {
+    header("location: forgotpassword.php?message=Du måste fylla i denna sida först!");
+}
+?>
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -38,41 +42,45 @@ include("includes/config.php");
 
                     <?php
 
+
+
                     //instans
                     $newuser = new Newuser();
 
-                    if (isset($_POST['password']) && isset($_POST['repeatpassword']) && isset($_POST['username'])) {
+   
+                        if (isset($_POST['password'])  && isset($_POST['repeatpassword']) ) {
 
-                        $password = $_POST['password'];
-                        $repeatpassword = $_POST['repeatpassword'];
-                        $username = $_POST['username'];
+                            $password = $_POST['password'];
+                            $repeatpassword = $_POST['repeatpassword'];
+                            $username = $_SESSION['changepassword'];
 
-                        $succes = true; // if all posts are OK
+                            $succes = true; // if all posts are OK
 
-                        if (!$newuser->setUsername($username)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett användarnamn!</p>";
-                        }
+                            if (!$newuser->setUsername($username)) {
+                                $succes = false;
+                                echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett användarnamn!</p>";
+                            }
+
+                            if (!$newuser->setPassword($password)) {
+                                $succes = false;
+                                echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange lösenord som är minst 4 tecken långt, och som innehåller siffror och bokstäver!</p>";
+                            }
+                            if (!$newuser->repeatPassword($repeatpassword, $password)) {
+                                $succes = false;
+                                echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Lösenorden matchar inte!</p>";
+                            }
+
+                            if ($newuser->changePassword($password, $repeatpassword)) {
+                                //if true
+                                unset($_SESSION['changepassword']);
+                            }
                         
-                        if (!$newuser->setPassword($password)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange lösenord som är minst 4 tecken långt, och som innehåller siffror och bokstäver!</p>";
                         }
-                        if (!$newuser->repeatPassword($repeatpassword, $password)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Lösenorden matchar inte!</p>";
-                        }
-
-                        if ($newuser->changePassword($password, $repeatpassword, $username)) {
-                            //if true
-
-                        }
-                    }
+                    
 
                     ?>
 
-                    <label for="username">Användarnamn:</label><br>
-                    <input class="input-form" type="text" name="username" id="username"><br>
+                   
                     <label for='password'>Lösenord: *</label><br>
                     <input class='input-form' type='password' name='password' id='password'><br>
                     <label for='repeatpassword'>Upprepa lösenord: *</label><br>

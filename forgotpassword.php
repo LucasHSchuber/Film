@@ -38,6 +38,11 @@ include("includes/config.php");
 
                     <?php
 
+                    //om användaren inte har fyllt i forgotpassweord.php men försöker nå sidan visas den felmeddelandet
+                    if (isset($_GET['message'])) {
+                        echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du måste fylla i denna sida först! </p>";
+                    }
+
                     //instans
                     $newuser = new Newuser();
 
@@ -55,7 +60,7 @@ include("includes/config.php");
 
                         if ($newuser->getPassword($username, $memory)) {
                             //if true
-                            $test = $username;
+
                         }
                     }
 
