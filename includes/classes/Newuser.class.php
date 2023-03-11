@@ -141,6 +141,45 @@ class Newuser
     }
 
 
+
+
+    // match memory for change of password
+    public function getPassword($username, $memory): bool
+    {
+        $sql = "SELECT username, memory FROM users WHERE username='$username';";
+        $result = $this->db->query($sql);
+        $info = mysqli_fetch_assoc($result); //returnerar endast en rad istället för en hel array
+
+        if ($info['username'] == $username && $info['memory'] == $memory ) {
+
+            header("location:changepassword.php");
+            return true;
+        } else {
+            echo "<p class='message error'> Användarnamnet matchar inte med namnet på husdjuret! </p>";
+            return false;
+        }
+    }
+    // match memory for change of password
+    public function changePassword($password, $repeatpassword, $username) : bool
+    {
+
+        $password =  $this->db->real_escape_string($password);
+        $repeatpassword =  $this->db->real_escape_string($repeatpassword);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        if ($password == $repeatpassword) {
+            $sql = "UPDATE users SET password = '$hashed_password' WHERE username = '$username';";
+            $this->db->query($sql);
+            header("location: login.php");
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    
+
+
     //login user
     public function getUser(string $username, string $password): bool
     {

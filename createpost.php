@@ -47,6 +47,7 @@ if (!isset($_SESSION['username'])) {
 
                     //instans
                     $newpost = new Newpost();
+                    
 
                     if ((isset($_POST['title'])) && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
 
@@ -79,6 +80,7 @@ if (!isset($_SESSION['username'])) {
                         }
                     } 
 
+                    
 
                     ?>
 

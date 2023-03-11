@@ -21,7 +21,7 @@ include("includes/config.php");
         <?php
 
         if (isset($_SESSION['username'])) {
-            header("location: start.php");
+            header("location: index.php");
         } else {
             include("includes/nav.php");
         }
@@ -70,7 +70,7 @@ include("includes/config.php");
                     <input class="input-form" type="password" name="password" id="password"><br><br><br>
                     <button class="login-btn" type="submit">Logga in &nbsp; <i class="fa-solid fa-arrow-right-long"></i></button><br><br>
                     <p class="message">Har du inget konto? <a href="createaccount.php">Skapa ett nytt konto här.</a><br>
-                    <p class="message"><a href="createaccount.php">Glömt lösenord?</a>
+                    <p class="message"><a href="forgotpassword.php">Glömt lösenord?</a>
                 </form>
             </section>
 

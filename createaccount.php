@@ -47,7 +47,7 @@ include("includes/head.php");
                         $repeatpassword = $_POST['repeatpassword'];
                         $firstname = $_POST['firstname'];
                         $lastname = $_POST['lastname'];
-                        $memory = $_POST['memory'];
+                        $memory = strtolower($_POST['memory']);
                         $email = $_POST['email'];
 
                         $succes = true; // if all posts are OK
