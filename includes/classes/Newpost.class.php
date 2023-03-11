@@ -94,9 +94,9 @@ class Newpost
     // }
 
     //get all stored post
-    public function printPostsAll(): array
+    public function printPostsAll($num): array
     {
-        $sql = "SELECT * FROM posts ORDER BY created DESC LIMIT 5;";
+        $sql = "SELECT * FROM posts ORDER BY created DESC LIMIT $num;";
         $result = $this->db->query($sql); //lagrar svaret från servern i $result
         return mysqli_fetch_all($result, MYSQLI_ASSOC); // lagrar i associativ array så det blir lättare att skriva ut på sidan
     }
