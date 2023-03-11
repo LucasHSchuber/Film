@@ -46,6 +46,9 @@ include("includes/config.php");
                     //instans
                     $newuser = new Newuser();
 
+                    //default values
+                    $username = "";
+
                     if (isset($_POST['username']) && isset($_POST['memory'])) {
 
                         $username = $_POST['username'];
@@ -61,13 +64,15 @@ include("includes/config.php");
                         if ($newuser->getPassword($username, $memory)) {
                             //if true
 
+                            //default values
+                            $username = "";
                         }
                     }
 
                     ?>
 
                     <label for="username">Användarnamn:</label><br>
-                    <input class="input-form" type="text" name="username" id="username"><br>
+                    <input class="input-form" type="text" name="username" id="username" value="<?= $username; ?>"><br>
                     <label for="password">Namnet på ditt första husdjur:</label><br>
                     <input class="input-form" type="text" name="memory" id="memory"><br><br><br>
                     <button class="login-btn" type="submit">Matchar det? &nbsp; <i class="fa-solid fa-key"></i></button><br><br>

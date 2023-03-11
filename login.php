@@ -44,9 +44,15 @@ include("includes/config.php");
                     }
                     unset($_SESSION['accountcreated']);
 
+                    //checks if password has changed and then echo message
+                    if (isset($_SESSION['passwordchanged'])) {
+                        echo "<p class='success message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['passwordchanged'] . "</p>";
+                    }
+                    unset($_SESSION['passwordchanged']);
+
                     //om användaren inte är inloggad men försöker nå sidan
-                    if (isset($_GET['message'])) { 
-                        echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver vara inloggad för att få åtkomst till denna sida! </p>" ;
+                    if (isset($_GET['message'])) {
+                        echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver vara inloggad för att få åtkomst till denna sida! </p>";
                     }
 
                     //instans
