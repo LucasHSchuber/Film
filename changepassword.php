@@ -47,6 +47,22 @@ include("includes/config.php");
                         $repeatpassword = $_POST['repeatpassword'];
                         $username = $_POST['username'];
 
+                        $succes = true; // if all posts are OK
+
+                        if (!$newuser->setUsername($username)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett användarnamn!</p>";
+                        }
+                        
+                        if (!$newuser->setPassword($password)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange lösenord som är minst 4 tecken långt, och som innehåller siffror och bokstäver!</p>";
+                        }
+                        if (!$newuser->repeatPassword($repeatpassword, $password)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Lösenorden matchar inte!</p>";
+                        }
+
                         if ($newuser->changePassword($password, $repeatpassword, $username)) {
                             //if true
 

@@ -11,6 +11,7 @@ class Newuser
     private $username;
     private $password;
     private $repeatpassword;
+    private $memory;
 
     //constructor
     function __construct()
@@ -146,6 +147,10 @@ class Newuser
     // match memory for change of password
     public function getPassword($username, $memory): bool
     {
+
+        if (!$this->setUsernameMemoryPassword($username, $memory)) return false;
+
+
         $sql = "SELECT username, memory FROM users WHERE username='$username';";
         $result = $this->db->query($sql);
         $info = mysqli_fetch_assoc($result); //returnerar endast en rad istället för en hel array
@@ -159,6 +164,18 @@ class Newuser
             return false;
         }
     }
+    public function setUsernameMemoryPassword($username, $memory): bool
+    {
+        if ($username != "" || $memory != "") {
+            $this->username = $username;
+            $this->memory = $memory;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     // match memory for change of password
     public function changePassword($password, $repeatpassword, $username) : bool
     {

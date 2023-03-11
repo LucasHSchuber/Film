@@ -46,6 +46,13 @@ include("includes/config.php");
                         $username = $_POST['username'];
                         $memory = strtolower($_POST['memory']);
 
+                        $succes = true; // if all posts are OK
+
+                        if (!$newuser->setUsernameMemoryPassword($username, $memory)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver skriva in ditt användarnamn och namnet på ditt första husdjur!</p>";
+                        }
+
                         if ($newuser->getPassword($username, $memory)) {
                             //if true
                             $test = $username;
