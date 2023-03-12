@@ -52,7 +52,7 @@ if (!isset($_SESSION['changepassword'])) {
 
                         $password = $_POST['password'];
                         $repeatpassword = $_POST['repeatpassword'];
-                        $username = $_SESSION['changepassword'];
+                        $email = $_SESSION['changepassword'];
 
                         $succes = true; // if all posts are OK
 
@@ -65,7 +65,7 @@ if (!isset($_SESSION['changepassword'])) {
                             echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Lösenorden matchar inte!</p>";
                         }
 
-                        if ($newuser->changePassword($password, $repeatpassword)) {
+                        if ($newuser->changePassword($password, $repeatpassword, $email)) {
                             //if true
                             unset($_SESSION['changepassword']);
                         }
@@ -81,7 +81,7 @@ if (!isset($_SESSION['changepassword'])) {
                     <input class='input-form' type='password' name='repeatpassword' id='repeatpassword'><br><br><br>
                     <button class="login-btn" type="submit">Byt lösenord &nbsp; <i class="fa-solid fa-key"></i></button><br><br>
                     <p class="message">Har du redan ett konto? <a href="login.php" style="text-decoration:underline;">Logga in här.</a><br>
-                    <p class="message">Har du inget konto? <a href="createaccount.php">Skapa ett nytt konto här.</a><br>
+                    <p class="message">Har du inget konto? <a href="createaccount.php" style="text-decoration:underline;">Skapa ett nytt konto här.</a><br>
                 </form>
             </section>
 

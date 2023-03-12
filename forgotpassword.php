@@ -47,37 +47,39 @@ include("includes/config.php");
                     $newuser = new Newuser();
 
                     //default values
-                    $username = "";
+                    $email = "";
 
-                    if (isset($_POST['username']) && isset($_POST['memory'])) {
+                    if (isset($_POST['email']) && isset($_POST['memory'])) {
 
-                        $username = $_POST['username'];
+                        $email = $_POST['email'];
                         $memory = strtolower($_POST['memory']);
 
                         $succes = true; // if all posts are OK
 
-                        if (!$newuser->setUsernameMemoryPassword($username, $memory)) {
+                        
+
+                        if (!$newuser->setEmailMemoryPassword($email, $memory)) {
                             $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver skriva in ditt användarnamn och namnet på ditt första husdjur!</p>";
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver skriva in din email och namnet på ditt första husdjur!</p>";
                         }
 
-                        if ($newuser->getPassword($username, $memory)) {
+                        if ($newuser->getPassword($email, $memory)) {
                             //if true
 
                             //default values
-                            $username = "";
+                            $email = "";
                         }
                     }
 
                     ?>
 
-                    <label for="username">Användarnamn:</label><br>
-                    <input class="input-form" type="text" name="username" id="username" value="<?= $username; ?>"><br>
-                    <label for="password">Namnet på ditt första husdjur:</label><br>
+                    <label for="email">Email: *</label><br>
+                    <input class="input-form" type="text" name="email" id="email" value="<?= $email; ?>"><br>
+                    <label for="memory">Namnet på ditt första husdjur: *</label><br>
                     <input class="input-form" type="text" name="memory" id="memory"><br><br><br>
                     <button class="login-btn" type="submit">Matchar det? &nbsp; <i class="fa-solid fa-key"></i></button><br><br>
                     <p class="message">Har du redan ett konto? <a href="login.php" style="text-decoration:underline;">Logga in här.</a><br>
-                    <p class="message">Har du inget konto? <a href="createaccount.php">Skapa ett nytt konto här.</a><br>
+                    <p class="message">Har du inget konto? <a href="createaccount.php" style="text-decoration:underline;">Skapa ett nytt konto här.</a><br>
                 </form>
             </section>
 

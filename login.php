@@ -75,8 +75,8 @@ include("includes/config.php");
                     <label for="password">Lösenord</label><br>
                     <input class="input-form" type="password" name="password" id="password"><br><br><br>
                     <button class="login-btn" type="submit">Logga in &nbsp; <i class="fa-solid fa-arrow-right-long"></i></button><br><br>
-                    <p class="message">Har du inget konto? <a href="createaccount.php">Skapa ett nytt konto här.</a><br>
-                    <p class="message"><a href="forgotpassword.php">Glömt lösenord?</a>
+                    <p class="message">Har du inget konto? <a href="createaccount.php" style="text-decoration:underline;">Skapa ett nytt konto här.</a><br>
+                    <p class="message"><a href="forgotpassword.php" style="text-decoration:underline;">Glömt lösenord?</a>
                 </form>
             </section>
 

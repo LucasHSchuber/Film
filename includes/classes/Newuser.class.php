@@ -65,22 +65,22 @@ class Newuser
 
 
     // match memory for change of password
-    public function getPassword($username, $memory): bool
+    public function getPassword($email, $memory): bool
     {
 
-        if (!$this->setUsernameMemoryPassword($username, $memory)) return false;
+        if (!$this->setEmailMemoryPassword($email, $memory)) return false;
 
 
-        $sql = "SELECT username, memory FROM users WHERE username='$username';";
+        $sql = "SELECT email, memory FROM users WHERE email='$email';";
         $result = $this->db->query($sql);
         $info = mysqli_fetch_assoc($result); //returnerar endast en rad istället för en hel array
 
-        if ($info['username'] == $username && $info['memory'] == $memory) {
-            $_SESSION['changepassword'] = $username;
+        if ($info['email'] == $email && $info['memory'] == $memory) {
+            $_SESSION['changepassword'] = $email;
             header("location:changepassword.php");
             return true;
         } else {
-            echo "<p class='message error'> Användarnamnet matchar inte med namnet på husdjuret! </p>";
+            echo "<p class='message error'> <i class='fa-solid fa-triangle-exclamation'></i> &nbsp; E-postadressen matchar inte med namnet på husdjuret! </p>";
             return false;
         }
     }
@@ -88,7 +88,7 @@ class Newuser
 
 
     // match memory for change of password
-    public function changePassword($password, $repeatpassword): bool
+    public function changePassword($password, $repeatpassword, $email): bool
     {
 
         if (!$this->setPassword($repeatpassword, $password)) return false;
@@ -97,10 +97,10 @@ class Newuser
         $password =  $this->db->real_escape_string($password);
         $repeatpassword =  $this->db->real_escape_string($repeatpassword);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $username = $_SESSION['changepassword'];
+        $email = $_SESSION['changepassword'];
 
         if ($password == $repeatpassword) {
-            $sql = "UPDATE users SET password = '$hashed_password' WHERE username = '$username';";
+            $sql = "UPDATE users SET password = '$hashed_password' WHERE email = '$email';";
             $this->db->query($sql);
             header("location: login.php");
             $_SESSION['passwordchanged'] = "Ditt lösenord har ändrats!";
@@ -189,16 +189,17 @@ class Newuser
             return true;
         }
     }
-    public function setUsernameMemoryPassword($username, $memory): bool
+    public function setEmailMemoryPassword($email, $memory): bool
     {
-        if ($username != "" || $memory != "") {
-            $this->username = $username;
+        if ($email != "" || $memory != "") {
+            $this->username = $email;
             $this->memory = $memory;
             return true;
         } else {
             return false;
         }
     }
+ 
 
 
 
