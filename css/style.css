@@ -544,9 +544,17 @@ picture img {
 
 /* profile */
 .profile{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     color:white;
     width: 80%;
     margin:auto;
+}
+.profile-picture{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 1px solid white;
 }
 .profile h1{
     font-size: 4em;
@@ -562,6 +570,7 @@ picture img {
     border: 0.5px solid white !important;
     margin: 5em 0;
 }
+
 
 
 
@@ -616,6 +625,21 @@ picture img {
         max-width: 100em;
         margin: auto;
 
+    }
+
+    /* profile */
+    .profile{
+        display: grid;
+        grid-template-columns: 1fr;
+        color:white;
+        width: 80%;
+        margin:auto;
+    }
+    .profile-picture{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        border: 1px solid white;
     }
 
 }

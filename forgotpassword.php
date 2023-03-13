@@ -55,7 +55,6 @@ include("includes/config.php");
                         $memory = strtolower($_POST['memory']);
 
                         $succes = true; // if all posts are OK
-
                         
 
                         if (!$newuser->setEmailMemoryPassword($email, $memory)) {

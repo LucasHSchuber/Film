@@ -116,6 +116,8 @@ if (!isset($_SESSION['username'])) {
                                 <option value="Sci-fi">Sci-fi</option>
                                 <option value="Skräck">Skräck</option>
                                 <option value="Thriller">Thriller</option>
+                                <option value="Western">Western</option>
+                                <option value="Äventyr">Äventyr</option>
                             </select>
                         </div>
                         <div>

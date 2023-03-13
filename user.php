@@ -42,18 +42,24 @@ include("includes/config.php");
             ?>
 
             <section class="profile">
-                <h1><?= $info['username'] ?></h1>
-                <h2><?= $info['firstname'] . " " . $info['lastname'] ?></h2>
-                <p>Antal inlägg: <?= $posts["COUNT(username)"] ?></p>
-                <hr class="hr">
+                <div style="padding:0.5em;">
+                    <img src="images/user.png" class="profile-picture" alt="profilbild, användare . <?=$info['username']?> . ">
+                </div>
+                <div style="margin-top:1em;min-width:25em;">
+                    <h1><?= $info['username'] ?></h1>
+                    <h2><?= $info['firstname'] . " " . $info['lastname'] ?></h2>
+                    <p>Antal inlägg: <?= $posts["COUNT(username)"] ?></p>
+                </div>
+                
             </section>
+            <hr class="hr">
 
 
             <section class="info-post">
 
                 <?php
 
-            
+
                 if (isset($_GET['username'])) {
                     $username = $_GET['username'];
 
