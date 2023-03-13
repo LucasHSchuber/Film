@@ -69,7 +69,7 @@ class Newuser
     {
 
         if (!$this->setEmailMemoryPassword($email, $memory)) return false;
-
+        
 
         $sql = "SELECT email, memory FROM users WHERE email='$email';";
         $result = $this->db->query($sql);
