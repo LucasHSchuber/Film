@@ -31,26 +31,36 @@ include("includes/config.php");
             <?php
             //instans
             $newuser = new Newuser();
+
             $username = $_GET['username'];
-            //lagrar info från användaren i $info
             $info = $newuser->getUserInfo($username);
 
             //instans
             $newpost = new Newpost();
             $posts = $newpost->getPostsAmount($username);
 
+
+
+            //hämtar ett click på profilen
+            if (isset($_GET['username'])) {
+                $username = $_GET['username'];
+
+                if ($newuser->addClick($username)) {
+                }
+            }
+
             ?>
 
             <section class="profile">
                 <div style="padding:0.5em;">
-                    <img src="images/user.png" class="profile-picture" alt="profilbild, användare . <?=$info['username']?> . ">
+                    <img src="images/user.png" class="profile-picture" alt="profilbild, användare . <?= $info['username'] ?> . ">
                 </div>
                 <div style="margin-top:1em;min-width:25em;">
                     <h1><?= $info['username'] ?></h1>
                     <h2><?= $info['firstname'] . " " . $info['lastname'] ?></h2>
                     <p>Antal inlägg: <?= $posts["COUNT(username)"] ?></p>
                 </div>
-                
+
             </section>
             <hr class="hr">
 

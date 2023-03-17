@@ -244,7 +244,7 @@ class Newpost
         if (!$this->setTitle($title)) return false;
         if (!$this->setYear($year)) return false;
         if (!$this->setComment($comment)) return false;
-        
+
         if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
 
             //flyttar filen till rätt katalog
@@ -263,7 +263,7 @@ class Newpost
         } else {
 
             //flyttar filen till rätt katalog
-           
+
             $file = $fileold;
 
             $title = $this->db->real_escape_string($title);
@@ -275,15 +275,11 @@ class Newpost
             $this->db->query($sql);
             header("location: myposts.php");
             return true;
-
         }
     }
 
 
-
-
-
-
+    
 
 
 

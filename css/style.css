@@ -276,15 +276,18 @@ picture img {
     margin: auto;
 
 }
+
 .box-posts h1 {
     font-size: 3em;
     color: rgb(183, 183, 183);
     font-weight: 700;
 }
+
 .box-posts p {
     font-size: 1.4em;
     color: rgb(183, 183, 183);
 }
+
 .post-image {
     width: 250px;
     height: 400px;
@@ -293,18 +296,23 @@ picture img {
     grid-area: imgArea;
     border: 0.2px solid rgb(123, 123, 123);
 }
+
 .post-title {
     grid-area: titleArea;
 }
+
 .post-media {
     grid-area: mediaArea;
 }
+
 .post-comment {
     grid-area: commentArea;
 }
+
 .post-btn {
     grid-area: btnArea;
 }
+
 .post-username {
     grid-area: usernameArea;
     font-size: 1.2em !important;
@@ -334,11 +342,13 @@ picture img {
     max-width: 100em;
     margin: auto;
 }
+
 .box-my-posts h1 {
     font-size: 3em;
     color: rgb(183, 183, 183);
     font-weight: 700;
 }
+
 .box-my-posts p {
     font-size: 1.4em;
     color: rgb(183, 183, 183);
@@ -543,35 +553,82 @@ picture img {
 
 
 /* profile */
-.profile{
+.profile {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    color:white;
+    color: white;
     width: 80%;
-    margin:auto;
+    margin: auto;
 }
-.profile-picture{
+
+.profile-picture {
     height: 150px;
     width: 150px;
     border-radius: 50%;
     border: 1px solid white;
 }
-.profile h1{
+
+.profile h1 {
     font-size: 4em;
 }
-.profile h2{
+
+.profile h2 {
     font-size: 1.2em;
-    margin-top:2em;
+    margin-top: 2em;
 }
-.profile p{
+
+.profile p {
     font-size: 1.2em;
 }
-.hr{
+
+.hr {
     border: 0.5px solid white !important;
     margin: 5em 0;
 }
 
 
+
+
+
+/* topplista */
+
+.toplist{
+    
+}
+#customers {
+    border-collapse: collapse;
+    margin: auto;
+    width: 80%;
+  }
+  #customers tr {
+    background-color: #000000 !important;
+    color: white;
+}
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #121212;
+    border: 0.5px solid #505050;
+    color: white;
+    padding: 8px;
+    font-size: 1.4em;
+    font-weight: 700;
+  }
+  #customers td{
+    border: 0.5px solid #505050;
+    padding: 8px;
+    font-size: 1.4em;
+    font-weight: 200;
+  }
+  #customers td a{
+    color: white;
+    text-decoration: underline;
+  }
+  #customers td a:hover{
+    color: rgb(209, 209, 209);
+    text-decoration: underline;
+  }
 
 
 
@@ -632,14 +689,15 @@ picture img {
     }
 
     /* profile */
-    .profile{
+    .profile {
         display: grid;
         grid-template-columns: 1fr;
-        color:white;
+        color: white;
         width: 80%;
-        margin:auto;
+        margin: auto;
     }
-    .profile-picture{
+
+    .profile-picture {
         height: 100px;
         width: 100px;
         border-radius: 50%;
@@ -649,11 +707,7 @@ picture img {
 }
 
 
-@media only screen and (max-width: 992px) and (min-width: 772px) {
-
-
-
-}
+@media only screen and (max-width: 992px) and (min-width: 772px) {}
 
 @media screen and (max-width: 772px) {
 
@@ -681,7 +735,7 @@ picture img {
             'usernameArea '
             'commentArea '
             'btnArea';
-    
+
         margin-top: 5em !important;
         margin-bottom: 8em !important;
         color: white;
@@ -690,15 +744,18 @@ picture img {
         margin: auto;
 
     }
+
     .box-posts h1 {
         font-size: 2.2em;
         color: rgb(183, 183, 183);
         font-weight: 800;
     }
+
     .box-posts p {
         font-size: 1.4em;
         color: rgb(183, 183, 183);
     }
+
     .post-image {
         width: 200px;
         height: 300px;
@@ -706,29 +763,33 @@ picture img {
         background-repeat: no-repeat;
         grid-area: imgArea;
     }
+
     .post-title {
         grid-area: titleArea;
     }
+
     .post-media {
         grid-area: mediaArea;
     }
+
     .post-comment {
         grid-area: commentArea;
     }
+
     .post-btn {
         grid-area: btnArea;
     }
+
     .post-username {
         grid-area: usernameArea;
         font-size: 1.2em !important;
         color: rgb(132, 132, 132) !important;
-        margin-top:1em;
+        margin-top: 1em;
     }
-    
-    
+
+
 
 
 }
 
 @media screen and (max-width: 500px) {}
-
