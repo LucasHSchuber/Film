@@ -274,7 +274,6 @@ picture img {
     width: 80%;
     max-width: 100em;
     margin: auto;
-
 }
 .box-posts h1 {
     font-size: 3em;
@@ -587,6 +586,10 @@ picture img {
         padding: 5em 6em 5em 6em;
     }
 
+    .box-one {
+        padding-bottom: 5em;
+    }
+
     .box-one h1 {
         font-size: 3.5em;
     }
@@ -696,8 +699,8 @@ picture img {
         color: rgb(183, 183, 183);
     }
     .post-image {
-        width: 250px;
-        height: 400px;
+        width: 200px;
+        height: 300px;
         object-fit: cover;
         background-repeat: no-repeat;
         grid-area: imgArea;
