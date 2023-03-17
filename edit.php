@@ -65,7 +65,8 @@ if (!isset($_SESSION['username'])) {
 
                     // }
 
-                    if ((isset($_POST['title'])) && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
+                    // && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg"))
+                    if (isset($_POST['title'])) {
 
 
                         $title = strip_tags($_POST['title']);
@@ -77,8 +78,24 @@ if (!isset($_SESSION['username'])) {
                         $grade = (int)$_POST['grade'];
                         // $username = $_SESSION['username'];
                         $file = $_FILES['file'];
+                        $fileold = $list['filename'];
 
-                        if ($newpost->addEditPost($title, $id, $year, $comment, $media, $genre, $grade, $file)) {
+                        $sucess = true;// if all posts are OK
+
+                        if (!$newpost->setTitle($title)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en titel!</p>";
+                        }
+                        if (!$newpost->setYear($year)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett år!</p>";
+                        }
+                        if (!$newpost->setComment($comment)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver skriva en kommentar!</p>";
+                        }
+
+                        if ($newpost->addEditPost($title, $id, $year, $comment, $media, $genre, $grade, $file, $fileold)) {
 
                         }
                     }
@@ -106,7 +123,7 @@ if (!isset($_SESSION['username'])) {
                         <div>
                             <label>Genre:</label>
                             <select name="genre" id="genre">
-                                <option value="Action" <?php if($list['genre'] == 'Action'){echo 'selected';} ?>  >Action</option>
+                                <option value="Action" <?php if($list['genre'] == 'Action'){echo 'selected';} ?> >Action</option>
                                 <option value="Drama" <?php if($list['genre'] == 'Drama'){echo 'selected';} ?>>Drama</option>
                                 <option value="Historia" <?php if($list['genre'] == 'Historia'){echo 'selected';} ?>>Historia</option>
                                 <option value="Hjärnskrynklare" <?php if($list['genre'] == 'Hjärnskrynklare'){echo 'selected';} ?>>Hjärnskrynklare</option>
@@ -118,6 +135,9 @@ if (!isset($_SESSION['username'])) {
                                 <option value="Sci-fi" <?php if($list['genre'] == 'Sci-fi'){echo 'selected';} ?>>Sci-fi</option>
                                 <option value="Skräck" <?php if($list['genre'] == 'Skräck'){echo 'selected';} ?>>Skräck</option>
                                 <option value="Thriller" <?php if($list['genre'] == 'Thriller'){echo 'selected';} ?>>Thriller</option>
+                                <option value="Western" <?php if($list['genre'] == 'Western'){echo 'selected';} ?>>Western</option>
+                                <option value="Äventyr" <?php if($list['genre'] == 'Äventyr'){echo 'selected';} ?>>Äventyr</option>
+                                
                             </select>
                         </div>
                         <div>

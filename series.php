@@ -42,7 +42,7 @@ include("includes/config.php");
                 <h1 class="grid-box-films">Serier.</h1>
                 <div class="grid-box-films">
                     <select class="select-genre">
-                        <option value="">Genre</option>
+                        <option value="">Genre (not working)</option>
                         <option value="">Action</option>
                         <option value="">Drama</option>
                         <option value="">Historia</option>

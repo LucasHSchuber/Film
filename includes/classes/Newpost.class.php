@@ -9,6 +9,10 @@ class Newpost
     private $year;
     private $comment;
     private $file;
+    private $fileold;
+    private $media;
+    private $grade;
+    private $genre;
 
     //constructor
     function __construct()
@@ -23,13 +27,17 @@ class Newpost
 
 
     // add post
-    public function addPost(string $title, int $year, string $comment, string $media, string $genre, int $grade, string $username, $file): bool
+    public function addPost(string $title, string $year, string $comment, string $media, string $genre, string $grade, string $username, $file): bool
     {
 
         if (!$this->setTitle($title)) return false;
+        if (!$this->setYear($year)) return false;
         if (!$this->setComment($comment)) return false;
+        if (!$this->setMedia($media)) return false;
+        if (!$this->setGrade($grade)) return false;
+        if (!$this->setGenre($genre)) return false;
 
-        if ($_FILES['file']['type']) {
+        if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
             if (file_exists("postsimages/" . $_FILES['file']['name'])) {
                 return "Filen " . $_FILES['file']['name'] . " finns redan, välj annat namn.";
             } else {
@@ -49,6 +57,17 @@ class Newpost
                 return true;
             }
         } else {
+
+
+            //sanitera med real_escape_string
+            $title = $this->db->real_escape_string($title);
+            $year = $this->db->real_escape_string($year);
+            $comment = $this->db->real_escape_string($comment);
+
+            //SQL fråga
+            $sql = "INSERT INTO posts(title, year, comment, media, genre, grade, username)VALUES('$title', '$year', '$comment', '$media', '$genre', '$grade', '$username');";
+            $this->db->query($sql);
+            header("location: index.php");
             return true;
         }
     }
@@ -57,6 +76,15 @@ class Newpost
     {
         if ($title != "") {
             $this->title = $title;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setYear($year): bool
+    {
+        if ($year != "") {
+            $this->year = $year;
             return true;
         } else {
             return false;
@@ -71,6 +99,36 @@ class Newpost
             return false;
         }
     }
+    public function setMedia(string $media): bool
+    {
+        if ($media != "") {
+            $this->media = $media;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setGrade(string $grade): bool
+    {
+        if ($grade != "") {
+            $this->grade = $grade;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function setGenre(string $genre): bool
+    {
+        if ($genre != "") {
+            $this->genre = $genre;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
 
 
 
@@ -158,12 +216,14 @@ class Newpost
     }
 
     // gets amount of posts
-      public function getPostsAmount($username)
+    public function getPostsAmount($username)
     {
         $sql = "SELECT COUNT(username)FROM posts WHERE username='$username';";
         $result = $this->db->query($sql); //lagrar svaret från servern i $result
         return mysqli_fetch_assoc($result); //returnerar endast en rad istället för en hel array
     }
+
+
 
 
 
@@ -178,22 +238,45 @@ class Newpost
     }
 
     //add edit post values to db
-    public function addEditPost(string $title, int $id, int $year, string $comment, string $media, string $genre, int $grade, $file): bool
+    public function addEditPost(string $title, int $id, string $year, string $comment, string $media, string $genre, string $grade, $file, $fileold): bool
     {
 
-        //flyttar filen till rätt katalog
-        move_uploaded_file($_FILES['file']['tmp_name'], "postsimages/" . $_FILES['file']['name']);
-        $file = $_FILES['file']['name'];
+        if (!$this->setTitle($title)) return false;
+        if (!$this->setYear($year)) return false;
+        if (!$this->setComment($comment)) return false;
+        
+        if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
 
-        $title = $this->db->real_escape_string($title);
-        $year = $this->db->real_escape_string($year);
-        $comment = $this->db->real_escape_string($comment);
+            //flyttar filen till rätt katalog
+            move_uploaded_file($_FILES['file']['tmp_name'], "postsimages/" . $_FILES['file']['name']);
+            $file = $_FILES['file']['name'];
 
-        //SQL fråga
-        $sql = "UPDATE posts SET title = '$title', year = '$year', comment = '$comment', media = '$media', genre = '$genre', grade = '$grade', filename = '$file' WHERE id = '$id';";
-        $this->db->query($sql);
-        header("location: myposts.php");
-        return true;
+            $title = $this->db->real_escape_string($title);
+            $year = $this->db->real_escape_string($year);
+            $comment = $this->db->real_escape_string($comment);
+
+            //SQL fråga
+            $sql = "UPDATE posts SET title = '$title', year = '$year', comment = '$comment', media = '$media', genre = '$genre', grade = '$grade', filename = '$file' WHERE id = '$id';";
+            $this->db->query($sql);
+            header("location: myposts.php");
+            return true;
+        } else {
+
+            //flyttar filen till rätt katalog
+           
+            $file = $fileold;
+
+            $title = $this->db->real_escape_string($title);
+            $year = $this->db->real_escape_string($year);
+            $comment = $this->db->real_escape_string($comment);
+
+            //SQL fråga
+            $sql = "UPDATE posts SET title = '$title', year = '$year', comment = '$comment', media = '$media', genre = '$genre', grade = '$grade', filename = '$file' WHERE id = '$id';";
+            $this->db->query($sql);
+            header("location: myposts.php");
+            return true;
+
+        }
     }
 
 

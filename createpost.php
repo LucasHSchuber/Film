@@ -48,16 +48,16 @@ if (!isset($_SESSION['username'])) {
                     //instans
                     $newpost = new Newpost();
                     
-
-                    if ((isset($_POST['title'])) && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
+                    // && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg"))
+                    if (isset($_POST['title'])) {
 
 
                         $title = strip_tags($_POST['title']);
-                        $year = intval($_POST['year']);
+                        $year = $_POST['year'];
                         $comment = strip_tags($_POST['comment']);
                         $media = $_POST['media'];
                         $genre = $_POST['genre'];
-                        $grade = (int)$_POST['grade'];
+                        $grade = $_POST['grade'];
                         $username = $_SESSION['username'];
                         $file = $_FILES['file'];
 
@@ -67,9 +67,25 @@ if (!isset($_SESSION['username'])) {
                             $succes = false;
                             echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en titel!</p>";
                         }
+                        if (!$newpost->setYear($year)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett år!</p>";
+                        }
                         if (!$newpost->setComment($comment)) {
                             $succes = false;
                             echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver skriva en kommentar!</p>";
+                        }
+                        if (!$newpost->setMedia($media)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en typ av media!</p>";
+                        }
+                        if (!$newpost->setGenre($genre)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en genre!</p>";
+                        }
+                        if (!$newpost->setGrade($grade)) {
+                            $succes = false;
+                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett betyg!</p>";
                         }
                         
                         if ($newpost->addPost($title, $year, $comment, $media, $genre, $grade, $username, $file)) {
@@ -84,26 +100,26 @@ if (!isset($_SESSION['username'])) {
 
                     ?>
 
-                    <label for="title">Titel:</label><br>
+                    <label for="title">Titel: *</label><br>
                     <input class="input-form" type="text" name="title" id="title"><br>
-                    <label for="year">År:</label><br>
+                    <label for="year">År: *</label><br>
                     <input class="input-form year" type="number" name="year" id="year"><br>
-                    <label for="comment">Kommentar</label><br>
+                    <label for="comment">Kommentar: *</label><br>
                     <textarea class="input-form" name="comment" id="comment" rows="3" style="padding:0!important;"></textarea>
                     <div class="select-div">
                         <div>
-                            <label>Media:</label>
+                            <label>Media: *</label>
                             <select name="media" id="media">
-                                <option value="" selected>-</option>
+                                <option value="" selected></option>
                                 <option value="Film">Film</option>
                                 <option value="Serie">Serie</option>
                                 <option value="Dokumentär">Dokumentär</option>
                             </select>
                         </div>
                         <div>
-                            <label>Genre:</label>
+                            <label>Genre: *</label>
                             <select name="genre" id="genre">
-                                <option value="" selected>-</option>
+                                <option value="" selected></option>
                                 <option value="Action">Action</option>
                                 <option value="Drama">Drama</option>
                                 <option value="Historia">Historia</option>
@@ -121,9 +137,9 @@ if (!isset($_SESSION['username'])) {
                             </select>
                         </div>
                         <div>
-                            <label>Betyg:</label>
+                            <label>Betyg: *</label>
                             <select name="grade" id="grade">
-                                <option value="" selected>-</option>
+                                <option value="" selected></option>
                                 <option value="1">1/10 </option>
                                 <option value="2">2/10</option>
                                 <option value="3">3/10</option>
