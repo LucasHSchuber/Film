@@ -29,9 +29,9 @@ include("includes/config.php");
 
         <div class="hero-wrapper">
             <picture class="hero-image">
-                <source srcset="images/t.jpg" media="(min-width: 1521px)">
-                <source srcset="images/t.jpg" media="(min-width: 801px)">
-                <img src="images/t.jpg" alt="bild på en person på ett fjäll" />
+                <source srcset="images/filmer_mellan.jpg" media="(min-width: 1521px)">
+                <source srcset="images/filmer_mellan.jpg" media="(min-width: 801px)">
+                <img src="images/filmer_small.jpg" alt="bild på en person på ett fjäll" />
             </picture>
         </div>
 
