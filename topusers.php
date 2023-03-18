@@ -1,11 +1,7 @@
 <?php
 include("includes/config.php");
 ?>
-<?php
-if (!isset($_SESSION['username'])) {
-    header("location: login.php?message=Du måste vara inloggad för att få åtkomst till denna sida.");
-}
-?>
+
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -33,32 +29,91 @@ if (!isset($_SESSION['username'])) {
     <main>
 
         <div class="wrapper">
-            
-        <h1 class="title" style="margin:auto;width:80%;margin-bottom:1em;">Topplista</h1>
+
+            <h1 class="title" style="margin:auto;width:80%;margin-bottom:1em;">Topplista</h1>
             <section class="toplist">
-                
-                <table id="customers">
+
+                <div class="tab">
+                    <button class="tablinks" id="visits-btn" onclick="openCity(event, 'visits')">Antal besök</button>
+                    <button class="tablinks" onclick="openCity(event, 'posts')">Antal inlägg</button>
+                </div>
+
+<!-- 
+                <div class="toplist-btn-wrapper">
+                    <button id="visit-info-btn" class="toplist-btn visit" onclick="openVisits()">Antal besök</button>
+                    <button id="posts-info-btn" class="toplist-btn posts" onclick="openPosts()">Antal inlägg</button>
+                </div> -->
+
+                <table id="visits" class="tabcontent visit-info-box">
+
                     <tr>
                         <th>Användarnamn</th>
-                        <th>Antal besökare</th>
+                        <th>Antal besök</th>
                     </tr>
-                
+
                     <?php
 
                     $newuser = new Newuser();
 
-                    $user = $newuser->getTopUsers();
+                    $num = 10;
+                    $user = $newuser->getTopUsers($num);
 
                     foreach ($user as $list) {
                         echo "
-                    <tr class=''>
+                    <tr>
                         <td>
-                        <a href='user.php?username=" . $list['username'] . "'>" 
-                        . $list['username'] .
-                        "</a>  
+                        <a href='user.php?username=" . $list['username'] . "'>"
+                            . $list['username'] .
+                            "</a>  
                         </td>
-                        <td>" 
-                             . $list['click'] .
+                        <td>"
+                            . $list['click'] .
+                        "</td> 
+                    </tr>";
+                    }
+
+                    // echo "<pre>";
+                    // print_r($user); // or var_dump($data);
+                    // echo "</pre>";
+                    ?>
+
+                </table>
+
+                <table id="posts" class="tabcontent posts-info-box">
+
+                    <tr>
+                        <th>Uppladdat av</th>
+                        <th>Titel på inlägg</th>
+                        <th>Inlägg läst antal gånger</th>
+                    </tr>
+
+                    <?php
+
+                    $newposts = new Newpost();
+
+                    $num = 10;
+                    $posts = $newposts->getTopRead($num);
+
+                    // echo "<pre>";
+                    // print_r($posts); // or var_dump($data);
+                    // echo "</pre>";
+
+
+                    foreach ($posts as $list) {
+                        echo "
+                    <tr>
+                        <td>
+                        <a href='user.php?username=" . $list['username'] . "'>"
+                            . $list['username'] .
+                            "</a>  
+                        </td>
+                        <td>
+                        <a href='info.php?id=" . $list['id'] . "'>"
+                        . $list['title'] .
+                        "</a>  
+                        </td> 
+                        <td>"
+                            .  $list['click'] .
                         "</td> 
                     </tr>";
                     }
@@ -80,6 +135,8 @@ if (!isset($_SESSION['username'])) {
         include("includes/footer.php");
         ?>
     </footer>
+
+    <script src=js/js.js></script>
 </body>
 
 </html>

@@ -35,12 +35,23 @@ include("includes/config.php");
 
                 $newpost = new Newpost();
 
+
+                //hämtar ett click på profilen
+                if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+
+                    if ($newpost->addRead($id)) {
+                    }
+                }
+
+
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
 
                     if ($newpost->printPostSpec($id)) {
                     }
                 }
+
 
                 $list = $newpost->printPostSpec($id);
 

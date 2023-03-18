@@ -282,6 +282,20 @@ class Newpost
     
 
 
+    public function addRead($id)
+    {
+        $sql = "UPDATE posts SET click = (click + 1) WHERE id='$id';"; 
+        $this->db->query($sql);
+    }
+    public function getTopRead($num)
+    {
+        $sql = "SELECT * FROM posts ORDER BY click DESC LIMIT $num;"; 
+        $result = $this->db->query($sql); //lagrar svaret från servern i $result
+        return mysqli_fetch_all($result, MYSQLI_ASSOC); // lagrar i associativ array så det blir lättare att skriva ut på sidan
+    }
+
+
+
 
 
     // delete post

@@ -250,9 +250,9 @@ class Newuser
         $sql = "UPDATE users SET click = click + 1 WHERE username = '$username';"; 
         $this->db->query($sql);
     }
-    public function getTopUsers()
+    public function getTopUsers($num)
     {
-        $sql = "SELECT * FROM users ORDER BY click DESC;"; 
+        $sql = "SELECT * FROM users ORDER BY click DESC LIMIT $num;"; 
         $result = $this->db->query($sql); //lagrar svaret från servern i $result
         return mysqli_fetch_all($result, MYSQLI_ASSOC); // lagrar i associativ array så det blir lättare att skriva ut på sidan
     }
