@@ -489,11 +489,13 @@ picture img {
     color: white;
     font-weight: 600;
 }
+
 .subtitle {
     margin-bottom: 1em;
     margin-top: 2em;
     color: white;
 }
+
 .link {
     text-decoration: underline;
     color: rgb(70, 150, 255);
@@ -571,6 +573,9 @@ picture img {
     width: 150px;
     border-radius: 50%;
     border: 1px solid white;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    grid-area: imgArea;
 }
 
 .profile h1 {
@@ -603,18 +608,20 @@ picture img {
 } */
 
 
-.visit-info-box, .posts-info-box {
+.visit-info-box,
+.posts-info-box {
     border-collapse: collapse;
     margin: auto;
 }
 
-.visit-info-box tr, .posts-info-box tr {
+.visit-info-box tr,
+.posts-info-box tr {
     background-color: #000000;
     color: white;
 
 }
 
-.visit-info-box th{
+.visit-info-box th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -626,6 +633,7 @@ picture img {
     font-weight: 700;
 
 }
+
 .posts-info-box th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -638,7 +646,8 @@ picture img {
     font-weight: 700;
 }
 
-.visit-info-box td, .posts-info-box td {
+.visit-info-box td,
+.posts-info-box td {
     border-bottom: 0.5px solid #505050;
     padding: 8px;
     font-size: 1.4em;
@@ -646,12 +655,14 @@ picture img {
 
 }
 
-.visit-info-box td a, .posts-info-box td a {
+.visit-info-box td a,
+.posts-info-box td a {
     color: white;
     text-decoration: underline;
 }
 
-.visit-info-box td a:hover, .posts-info-box td a:hover {
+.visit-info-box td a:hover,
+.posts-info-box td a:hover {
     color: rgb(209, 209, 209);
     text-decoration: underline;
 }
@@ -660,6 +671,7 @@ picture img {
 
     margin: auto;
 }
+
 .toplist-btn {
     margin: auto;
     padding: 0.5em 1em;
@@ -667,15 +679,18 @@ picture img {
     background-color: #121212;
     color: rgb(255, 255, 255);
 }
-.toplist-btn:hover{
+
+.toplist-btn:hover {
     margin: auto;
     padding: 0.5em 1em;
     background-color: #303030;
     color: rgb(255, 255, 255);
 }
+
 .toplist-btn:focus {
     outline: none;
 }
+
 /* .visit{
     border-top: 0.5px solid #505050;
     border-bottom: 0.5px solid #505050;
@@ -703,10 +718,10 @@ picture img {
     width: 80%;
     margin: auto;
     border: 0.5px solid rgb(173, 173, 173);
-  }
-  
-  /* Style the buttons inside the tab */
-  .tab button {
+}
+
+/* Style the buttons inside the tab */
+.tab button {
     background-color: inherit;
     float: left;
     border: none;
@@ -718,32 +733,32 @@ picture img {
     color: white;
     border: 0.5px solid #484848;
     width: 50%;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
     background-color: #000000;
 
-  }
+}
 
-  /* Create an active/current tablink class */
-  .tab button.active {
+/* Create an active/current tablink class */
+.tab button.active {
     background-color: #000000;
-  }
+}
 
-  .tab button:focus {
+.tab button:focus {
     outline: none;
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
+}
+
+/* Style the tab content */
+.tabcontent {
     display: none;
     padding: 1.5em 1.5em;
     border: 0.5px solid #ccc;
     border-top: none;
     width: 80%;
     margin: auto;
-  }
+}
 
 
 

@@ -39,7 +39,9 @@ include("includes/config.php");
             $newpost = new Newpost();
             $posts = $newpost->getPostsAmount($username);
 
-
+            // echo "<pre>";
+            // print_r($info); // or var_dump($data);
+            // echo "</pre>";
 
             //hämtar ett click på profilen
             if (isset($_GET['username'])) {
@@ -53,7 +55,9 @@ include("includes/config.php");
 
             <section class="profile">
                 <div style="padding:0.5em;">
-                    <img src="images/user.png" class="profile-picture" alt="profilbild, användare . <?= $info['username'] ?> . ">
+                <?php
+                 echo "<img class='profile-picture' src='profileimages/" . $info['filename'] . "' >";
+                ?> 
                 </div>
                 <div style="margin-top:1em;min-width:25em;">
                     <h1><?= $info['username'] ?></h1>

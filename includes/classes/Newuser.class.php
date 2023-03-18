@@ -246,7 +246,7 @@ class Newuser
 
 
 
-    public function addUserInfo(string $firstname, string $lastname, string $bio, $file, $id): bool
+    public function addUserInfo(string $firstname, string $lastname, string $bio, $file, $id, $fileold): bool
     {
 
         if (!$this->setFirstname($firstname)) return false;
@@ -254,27 +254,40 @@ class Newuser
 
 
         if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
-            if (file_exists("profileimages/" . $_FILES['file']['name'])) {
-                return "Filen " . $_FILES['file']['name'] . " finns redan, välj annat namn.";
-            } else {
-                //flyttar filen till rätt katalog
-                move_uploaded_file($_FILES['file']['tmp_name'], "profileimages/" . $_FILES['file']['name']);
-                $file = $_FILES['file']['name'];
 
-                //sanitera med read_escape_string
-                $firstname =  $this->db->real_escape_string($firstname);
-                $lastname =  $this->db->real_escape_string($lastname);
-                $bio = $this->db->real_escape_string($bio);
+            //flyttar filen till rätt katalog
+            move_uploaded_file($_FILES['file']['tmp_name'], "profileimages/" . $_FILES['file']['name']);
+            $file = $_FILES['file']['name'];
+
+            //sanitera med read_escape_string
+            $firstname =  $this->db->real_escape_string($firstname);
+            $lastname =  $this->db->real_escape_string($lastname);
+            $bio = $this->db->real_escape_string($bio);
 
 
-                //SQL fråga
-                $sql = "UPDATE users SET firstname = '$firstname', lastname = '$lastname', bio = '$bio', filename = '$file' WHERE id = '$id';";
-                $this->db->query($sql);
-                header("location: settings.php");
-                return true;
-            }
+            //SQL fråga
+            $sql = "UPDATE users SET firstname = '$firstname', lastname = '$lastname', bio = '$bio', filename = '$file' WHERE id = '$id';";
+            $this->db->query($sql);
+            header("location: settings.php");
+            return true;
+        } else{
+
+            $file = $fileold;
+
+             //sanitera med read_escape_string
+             $firstname =  $this->db->real_escape_string($firstname);
+             $lastname =  $this->db->real_escape_string($lastname);
+             $bio = $this->db->real_escape_string($bio);
+ 
+ 
+             //SQL fråga
+             $sql = "UPDATE users SET firstname = '$firstname', lastname = '$lastname', bio = '$bio', filename = '$file' WHERE id = '$id';";
+             $this->db->query($sql);
+             header("location: settings.php");
+             return true;
         }
     }
+
 
 
 

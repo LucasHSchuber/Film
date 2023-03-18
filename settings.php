@@ -46,9 +46,9 @@ if (!isset($_SESSION['username'])) {
 
                 $info = $newuser->getUserInfo($username);
 
-                // echo "<pre>";
-                // print_r($info); // or var_dump($data);
-                // echo "</pre>";
+                echo "<pre>";
+                print_r($info); // or var_dump($data);
+                echo "</pre>";
 
             
 
@@ -60,6 +60,7 @@ if (!isset($_SESSION['username'])) {
                     $bio = strip_tags($_POST['bio']);
                     $file = $_FILES['file'];
                     $id = $info['id'];
+                    $fileold = $info['filename'];
 
                     $succes = true; // if all posts are OK
 
@@ -75,7 +76,7 @@ if (!isset($_SESSION['username'])) {
 
                     
 
-                    if ($newuser->addUserInfo($firstname, $lastname, $bio, $file, $id)) {
+                    if ($newuser->addUserInfo($firstname, $lastname, $bio, $file, $id, $fileold)) {
                         //if true
                     }
                 }
