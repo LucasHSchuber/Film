@@ -487,8 +487,13 @@ picture img {
 .title {
     margin-bottom: 1em;
     color: white;
+    font-weight: 600;
 }
-
+.subtitle {
+    margin-bottom: 1em;
+    margin-top: 2em;
+    color: white;
+}
 .link {
     text-decoration: underline;
     color: rgb(70, 150, 255);

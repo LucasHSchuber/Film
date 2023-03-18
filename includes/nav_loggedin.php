@@ -15,6 +15,6 @@
                 <a href="#">Mina inlägg</a>
                 <a href="#">Inställningar</a>
             </div>
-        <a href="createpost.php"><i class="fa-regular fa-2x fa-square-plus"></i></a>
+        <a href="settings.php"><i class="fa-regular fa-2x fa-square-plus"></i></a>
     </div>
 </nav>

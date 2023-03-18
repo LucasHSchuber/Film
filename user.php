@@ -58,7 +58,8 @@ include("includes/config.php");
                 <div style="margin-top:1em;min-width:25em;">
                     <h1><?= $info['username'] ?></h1>
                     <h2><?= $info['firstname'] . " " . $info['lastname'] ?></h2>
-                    <p>Antal inlägg: <?= $posts["COUNT(username)"] ?></p>
+                    <p>Antal inlägg: <?= $posts['COUNT(username)'] ?></p>
+                    <p>Biografi: <?= $info['bio'] ?></p>
                 </div>
 
             </section>

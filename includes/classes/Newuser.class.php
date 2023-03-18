@@ -12,6 +12,8 @@ class Newuser
     private $password;
     private $repeatpassword;
     private $memory;
+    private $bio;
+    private $fileprofilepic;
 
     //constructor
     function __construct()
@@ -69,7 +71,7 @@ class Newuser
     {
 
         if (!$this->setEmailMemoryPassword($email, $memory)) return false;
-        
+
 
         $sql = "SELECT email, memory FROM users WHERE email='$email';";
         $result = $this->db->query($sql);
@@ -199,7 +201,7 @@ class Newuser
             return false;
         }
     }
- 
+
 
 
 
@@ -244,15 +246,48 @@ class Newuser
 
 
 
+    public function addUserInfo(string $firstname, string $lastname, string $bio, $file, $id): bool
+    {
+
+        if (!$this->setFirstname($firstname)) return false;
+        if (!$this->setLastname($lastname)) return false;
+
+
+        if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
+            if (file_exists("profileimages/" . $_FILES['file']['name'])) {
+                return "Filen " . $_FILES['file']['name'] . " finns redan, välj annat namn.";
+            } else {
+                //flyttar filen till rätt katalog
+                move_uploaded_file($_FILES['file']['tmp_name'], "profileimages/" . $_FILES['file']['name']);
+                $file = $_FILES['file']['name'];
+
+                //sanitera med read_escape_string
+                $firstname =  $this->db->real_escape_string($firstname);
+                $lastname =  $this->db->real_escape_string($lastname);
+                $bio = $this->db->real_escape_string($bio);
+
+
+                //SQL fråga
+                $sql = "UPDATE users SET firstname = '$firstname', lastname = '$lastname', bio = '$bio', filename = '$file' WHERE id = '$id';";
+                $this->db->query($sql);
+                header("location: settings.php");
+                return true;
+            }
+        }
+    }
+
+
+
+
     public function addClick(string $username)
     {
-  
-        $sql = "UPDATE users SET click = click + 1 WHERE username = '$username';"; 
+
+        $sql = "UPDATE users SET click = click + 1 WHERE username = '$username';";
         $this->db->query($sql);
     }
     public function getTopUsers($num)
     {
-        $sql = "SELECT * FROM users ORDER BY click DESC LIMIT $num;"; 
+        $sql = "SELECT * FROM users ORDER BY click DESC LIMIT $num;";
         $result = $this->db->query($sql); //lagrar svaret från servern i $result
         return mysqli_fetch_all($result, MYSQLI_ASSOC); // lagrar i associativ array så det blir lättare att skriva ut på sidan
     }

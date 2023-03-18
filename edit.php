@@ -110,7 +110,7 @@ if (!isset($_SESSION['username'])) {
                     <label for="year">År:</label><br>
                     <input class="input-form year" type="number" name="year" id="year" value="<?= $list['year']; ?>"><br>
                     <label for="comment">Kommentar</label><br>
-                    <textarea class="input-form" name="comment" id="comment" rows="3"><?= $list['comment']; ?></textarea>
+                    <textarea class="input-form" name="comment" id="comment" rows="3" style="padding:0.5em!important;"><?= $list['comment']; ?></textarea>
                     <div class="select-div">
                         <div>
                             <label>Media:</label>
