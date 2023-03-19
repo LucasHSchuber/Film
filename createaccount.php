@@ -52,7 +52,6 @@ include("includes/head.php");
 
                         $succes = true; // if all posts are OK
 
-
                         if (!$newuser->setFirstname($firstname)) {
                             $succes = false;
                             echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ditt förnamn!</p>";
