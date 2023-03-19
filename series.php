@@ -5,7 +5,7 @@ include("includes/config.php");
 <html lang="sv">
 
 <head>
-    <title>Index</title>
+    <title>Serier</title>
 
     <?php
     include("includes/head.php");
@@ -31,7 +31,7 @@ include("includes/config.php");
             <picture class="hero-image">
                 <source srcset="images/serier_mellan.jpg" media="(min-width: 1521px)">
                 <source srcset="images/serier_mellan.jpg" media="(min-width: 801px)">
-                <img src="images/serier_small.jpg" alt="bild på en person på ett fjäll" />
+                <img src="images/serier_small.jpg" alt="serier, hero" />
             </picture>
         </div>
 
@@ -81,8 +81,8 @@ include("includes/config.php");
                     <div class='box-posts'> 
                     <img class='post-image' src='postsimages/" . $post['filename'] . "' alt='Bild " . $post['id'] . ", uppladdat av " . $post['username'] . "'>
                     <h1 class='post-title'>" . $post['title'] . " <span class='post-span'>(" . $post['year'] . ")</span> </h1> 
-                    <p class='post-media'>" . $post['media'] . " &nbsp; &#x2022; &nbsp; " . $post['genre'] . " &nbsp; &#x2022; &nbsp; " . $post['grade'] . "/10 <img src='images/symbols/star.png' width='18px' height='18px' style='margin-bottom:0.3em;'> </p>
-                    <p class='post-username'>" . "<a style='color:white;text-decoration:underline; 'href='user.php?username=" . $post['username'] . "'>" . $post['username'] . "</a>" . "&nbsp; &#x2022; &nbsp; " . $post['created'] . "</p> 
+                    <p class='post-media'>" . $post['media'] . " &nbsp; &#x2022; &nbsp; " . $post['genre'] . " &nbsp; &#x2022; &nbsp; " . $post['grade'] . "/10 <img src='images/symbols/star.png' alt='stjärna, betyg' width='18' height='18' style='margin-bottom:0.3em;'> </p>
+                    <p class='post-username'>" . "<a style='color:white;text-decoration:underline;' href='user.php?username=" . $post['username'] . "'>" . $post['username'] . "</a>" . "&nbsp; &#x2022; &nbsp; " . $post['created'] . "</p> 
                     <p class='post-comment'>" . $post['comment'] . "</p> 
                     <a class='post-btn read-btn' href='info.php?id=" . $post['id'] . "'>Läs mer</a>
                 </div>";
