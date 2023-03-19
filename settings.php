@@ -38,9 +38,17 @@ if (!isset($_SESSION['username'])) {
 
                 <?php
 
+                //check is session variable is set
                 if (isset($_SESSION['username'])) {
                     $username = $_SESSION['username'];
                 }
+
+                 //checks if settings is update and then echo message
+                 if (isset($_SESSION['settingsupdate'])) {
+                    echo "<p class='success message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['settingsupdate'] . "</p>";
+                }
+                unset($_SESSION['settingsupdate']);
+
                 //instans
                 $newuser = new Newuser();
 

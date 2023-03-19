@@ -555,19 +555,26 @@ picture img {
 /* info post */
 .info-post {
     margin: auto;
+
 }
-
-
 
 /* profile */
-.profile {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    color: white;
+
+.profile-wrapper {
     width: 80%;
     margin: auto;
+    max-width: 75em;
+    color: rgb(206, 206, 206);
+    display: flex;
+    column-gap: 5em;
 }
-
+.profile-wrapper span{
+    font-weight: 900;
+    color: white;
+}
+.profile-info{
+    padding-top: 7em;
+}
 .profile-picture {
     height: 150px;
     width: 150px;
@@ -576,19 +583,19 @@ picture img {
     object-fit: cover;
     background-repeat: no-repeat;
     grid-area: imgArea;
+    margin-top: 2.5em;
+}
+.profile-wrapper h1 {
+    font-size: 3.2em;
+    color: white;
 }
 
-.profile h1 {
-    font-size: 4em;
+.profile-wrapper h2 {
+    font-size: 1.4em;
 }
 
-.profile h2 {
-    font-size: 1.2em;
-    margin-top: 2em;
-}
-
-.profile p {
-    font-size: 1.2em;
+.profile-wrapper p {
+    font-size: 1.4em;
 }
 
 .hr {
@@ -837,6 +844,23 @@ picture img {
         border: 1px solid white;
     }
 
+
+    /* profile */
+    .profile-wrapper {
+        display: block;
+    }
+
+    .profile-info{
+        padding-top: 2em;
+    }
+    .profile-picture {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        background-repeat: no-repeat;
+    }
+ 
+    
 }
 
 
@@ -844,6 +868,9 @@ picture img {
 
 @media screen and (max-width: 772px) {
 
+    .wrapper{
+        padding-top: 3em;
+    }
     .login-wrapper {
         padding: 4em 0 10em 0;
     }
@@ -921,7 +948,32 @@ picture img {
     }
 
 
+    /* profile */
 
+    .profile-wrapper{
+        text-align: center;
+    }
+    .profile-info{
+        padding-top: 2em;
+    }
+    .profile-picture {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        border: 1px solid white;
+        object-fit: cover;
+        background-repeat: no-repeat;
+        grid-area: imgArea;
+        margin-top: 1.5em;
+    }
+    .profile-wrapper h1 {
+        font-size: 2.5em;
+    }
+    
+    .profile-wrapper h2, .profile-wrapper p  {
+        font-size: 1.2em;
+    }    
+  
 
 }
 

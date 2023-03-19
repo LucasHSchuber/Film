@@ -47,6 +47,11 @@ if (!isset($_SESSION['username'])) {
                     }
                 }
 
+                //checks if post is updated and then echo message
+                if (isset($_SESSION['postupdated'])) {
+                    echo "<p class='success message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['postupdated'] . "</p>";
+                }
+                unset($_SESSION['postupdated']);
 
                 if (isset($_SESSION['username'])) {
                     $username = $_SESSION['username'];
@@ -67,7 +72,7 @@ if (!isset($_SESSION['username'])) {
                     <p class='post-comment'>" . $post['comment'] . "</p> 
                     <div class='post-btn'>
                         <a class='delete-btn' href='myposts.php?delete=" . $post['id'] . "'>Ta bort &nbsp; <i class='fa-regular fa-trash-can'></i></a>
-                        <a class='edit-btn' href='edit.php?id=" . $post['id']. "'>Redigera &nbsp; <i class='fa-solid fa-pencil'></i></a>
+                        <a class='edit-btn' href='edit.php?id=" . $post['id'] . "'>Redigera &nbsp; <i class='fa-solid fa-pencil'></i></a>
                     </div>
                 </div>";
                 }

@@ -59,6 +59,12 @@ include("includes/config.php");
 
                 <?php
 
+                //checks if post is created and then echo message
+                if (isset($_SESSION['postcreated'])) {
+                    echo "<p class='success message'" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['postcreated'] . "</p>";
+                }
+                unset($_SESSION['postcreated']);
+
 
                 $num = (int)5;
                 $list = $newpost->printPostsAll($num);

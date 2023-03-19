@@ -53,24 +53,26 @@ include("includes/config.php");
 
             ?>
 
-            <section class="profile">
-                <div style="padding:0.5em;">
-                <?php
-                 echo "<img class='profile-picture' src='profileimages/" . $info['filename'] . "' >";
-                ?> 
-                </div>
-                <div style="margin-top:1em;min-width:25em;">
+            <section class="profile-wrapper">
+                <div>
                     <h1><?= $info['username'] ?></h1>
-                    <h2><?= $info['firstname'] . " " . $info['lastname'] ?></h2>
-                    <p>Antal inlägg: <?= $posts['COUNT(username)'] ?></p>
-                    <p>Biografi: <?= $info['bio'] ?></p>
+                    <?php
+                    echo "<img class='profile-picture' src='profileimages/" . $info['filename'] . "' >";
+                    ?>
+                </div>
+                <div class="profile-info">
+                    <h2><span>Namn: </span><?= $info['firstname'] . " " . $info['lastname'] ?></h2>
+                    <h2 style="margin-bottom:1em;"><span>Antal inlägg:</span> <?= $posts['COUNT(username)'] ?></h2>
+                    <p><span>Biografi: </span> <?= $info['bio'] ?></p>
                 </div>
 
             </section>
             <hr class="hr">
 
 
-            <section class="info-post">
+            <section class="">
+
+                <h1 class="title" style="width: 80%;max-width: 100em;margin: auto;margin-bottom:2em;"><?= $info['username'] ?>'s alla inlägg:</h1>
 
                 <?php
 

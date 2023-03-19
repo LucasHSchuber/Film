@@ -54,10 +54,10 @@ class Newpost
                 $sql = "INSERT INTO posts(title, year, comment, media, genre, grade, username, filename)VALUES('$title', '$year', '$comment', '$media', '$genre', '$grade', '$username', '$file');";
                 $this->db->query($sql);
                 header("location: index.php");
+                $_SESSION['postcreated'] = "Ditt inlägg har publicerats!";
                 return true;
             }
         } else {
-
 
             //sanitera med real_escape_string
             $title = $this->db->real_escape_string($title);
@@ -68,6 +68,7 @@ class Newpost
             $sql = "INSERT INTO posts(title, year, comment, media, genre, grade, username)VALUES('$title', '$year', '$comment', '$media', '$genre', '$grade', '$username');";
             $this->db->query($sql);
             header("location: index.php");
+            $_SESSION['postcreated'] = "Ditt inlägg har publicerats!";
             return true;
         }
     }
@@ -259,6 +260,7 @@ class Newpost
             $sql = "UPDATE posts SET title = '$title', year = '$year', comment = '$comment', media = '$media', genre = '$genre', grade = '$grade', filename = '$file' WHERE id = '$id';";
             $this->db->query($sql);
             header("location: myposts.php");
+            $_SESSION['postupdated'] = "Ditt inlägg har uppdaterats!";
             return true;
         } else {
 
@@ -274,6 +276,7 @@ class Newpost
             $sql = "UPDATE posts SET title = '$title', year = '$year', comment = '$comment', media = '$media', genre = '$genre', grade = '$grade', filename = '$file' WHERE id = '$id';";
             $this->db->query($sql);
             header("location: myposts.php");
+            $_SESSION['postupdated'] = "Ditt inlägg har uppdaterats!";
             return true;
         }
     }
