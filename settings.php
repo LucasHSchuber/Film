@@ -46,9 +46,9 @@ if (!isset($_SESSION['username'])) {
 
                 $info = $newuser->getUserInfo($username);
 
-                echo "<pre>";
-                print_r($info); // or var_dump($data);
-                echo "</pre>";
+                // echo "<pre>";
+                // print_r($info); // or var_dump($data);
+                // echo "</pre>";
 
             
 
@@ -73,6 +73,10 @@ if (!isset($_SESSION['username'])) {
                         $succes = false;
                         echo "<p class='error message'> <i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ditt efternamn!</p>";
                     }
+                    if (!$newuser->setBio($bio)) {
+                        $succes = false;
+                        echo "<p class='error message'> <i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Biografin får max innehålla 200 teceken!</p>";
+                    }
 
                     
 
@@ -91,7 +95,7 @@ if (!isset($_SESSION['username'])) {
                 <input class="input-form" type="text" name="lastname" id="lastname" value="<?= $info['lastname']; ?>"><br>
                 <label for="email">Email: *</label><br>
                 <input class="input-form" type="text" name="email" id="email" disabled value="<?= $info['email']; ?>"><br>
-                <label for="bio">Biografi (en kort beskrivning som visas på din profil): </label><br>
+                <label for="bio">Biografi (max 200 tecken): </label><br>
                 <textarea class="input-form" name="bio" id="bio" rows="5" style="padding:0.5em!important;"><?= $info['bio']; ?></textarea>
                 <label for="file" style="color:white !important;">Profilbild:</label>
                 <input class="input-form" style="color:white !important;" type="file" name="file" id="file"><br><br>

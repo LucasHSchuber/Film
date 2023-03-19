@@ -201,7 +201,15 @@ class Newuser
             return false;
         }
     }
-
+    public function setBio(string $bio): bool
+    {
+        if (strlen($bio) < 200) {
+            $this->bio = $bio;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 
@@ -251,6 +259,7 @@ class Newuser
 
         if (!$this->setFirstname($firstname)) return false;
         if (!$this->setLastname($lastname)) return false;
+        if (!$this->setBio($bio)) return false;
 
 
         if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
