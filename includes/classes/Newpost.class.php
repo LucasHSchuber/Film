@@ -39,7 +39,9 @@ class Newpost
 
         if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
             if (file_exists("postsimages/" . $_FILES['file']['name'])) {
-                return "Filen " . $_FILES['file']['name'] . " finns redan, välj annat namn.";
+                header("location: createpost.php");
+                $_SESSION['fileexists'] = "Filen " . $_FILES['file']['name'] . " finns redan, välj en annan fil!";
+                return false;
             } else {
                 //flyttar filen till rätt katalog
                 move_uploaded_file($_FILES['file']['tmp_name'], "postsimages/" . $_FILES['file']['name']);

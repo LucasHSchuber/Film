@@ -45,9 +45,17 @@ if (!isset($_SESSION['username'])) {
 
                     <?php
 
+
+                    //checks if settings is update and then echo message
+                    if (isset($_SESSION['fileexists'])) {
+                        echo "<p class='error message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['fileexists'] . "</p>";
+                    }
+                    unset($_SESSION['fileexists']);
+
+
                     //instans
                     $newpost = new Newpost();
-                    
+
                     // && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg"))
                     if (isset($_POST['title'])) {
 
@@ -87,16 +95,16 @@ if (!isset($_SESSION['username'])) {
                             $succes = false;
                             echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett betyg!</p>";
                         }
-                        
+
                         if ($newpost->addPost($title, $year, $comment, $media, $genre, $grade, $username, $file)) {
                             //if true
 
                             //default values
 
                         }
-                    } 
+                    }
 
-                    
+
 
                     ?>
 
