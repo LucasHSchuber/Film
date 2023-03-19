@@ -76,7 +76,6 @@ include("includes/config.php");
 
                 <?php
 
-
                 if (isset($_GET['username'])) {
                     $username = $_GET['username'];
 
