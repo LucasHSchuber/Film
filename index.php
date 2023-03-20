@@ -20,7 +20,7 @@ include("includes/config.php");
         if (isset($_SESSION['username'])) {
             include("includes/nav_loggedin.php");
         } else {
-            include("includes/nav.php");
+            include("includes/test.php");
         }
 
         ?>
@@ -94,6 +94,9 @@ include("includes/config.php");
         include("includes/footer.php");
         ?>
     </footer>
+
+
+    <script src=js/js.js></script>
 </body>
 
 </html>
