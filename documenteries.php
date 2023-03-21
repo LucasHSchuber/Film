@@ -16,14 +16,11 @@ include("includes/config.php");
 <body>
     <header>
         <?php
-
         if (isset($_SESSION['username'])) {
-            include("includes/nav_loggedin.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 
@@ -59,8 +56,8 @@ include("includes/config.php");
                     $newpost = new Newpost();
 
                     $blogs = $newpost->printUsers();
-                    
-                    foreach ($blogs as $users){
+
+                    foreach ($blogs as $users) {
                         echo "<li > <a class='link' style='text-decoration:underline;' href='user.php?username=" . $users['username'] .  "'>" . $users['username'] . "</a></li>";
                     }
                     ?>
@@ -86,7 +83,7 @@ include("includes/config.php");
                         <p class='post-comment'>" . $post['comment'] . "</p> 
                         <a class='post-btn read-btn' href='info.php?id=" . $post['id'] . "'>Läs mer</a>
                     </div>";
-                } 
+                }
                 ?>
 
 

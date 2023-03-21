@@ -9,8 +9,6 @@ if (!isset($_SESSION['changepassword'])) {
 <!DOCTYPE html>
 <html lang="sv">
 
-
-
 <head>
     <title>login</title>
 
@@ -23,13 +21,11 @@ if (!isset($_SESSION['changepassword'])) {
 
     <header>
         <?php
-
         if (isset($_SESSION['username'])) {
-            header("location: index.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 

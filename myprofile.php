@@ -1,7 +1,11 @@
 <?php
 include("includes/config.php");
 ?>
-
+<?php
+if (!isset($_SESSION['username'])) {
+    header("location: login.php?message=Du måste vara inloggad för att få åtkomst till denna sida.");
+}
+?>
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -31,7 +35,7 @@ include("includes/config.php");
             //instans
             $newuser = new Newuser();
 
-            $username = $_GET['username'];
+            $username = $_SESSION['username'];
             $info = $newuser->getUserInfo($username);
 
             //instans

@@ -19,13 +19,11 @@ include("includes/config.php");
 
     <header>
         <?php
-
         if (isset($_SESSION['username'])) {
-            header("location: index.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 

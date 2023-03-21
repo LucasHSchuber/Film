@@ -17,12 +17,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="documenteries.php">Dokumentärer</a>
             </li>
+            <div class="vl"></div>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" style="padding-right:0.5em;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Meny
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="user.php">Min profil</a>
+                    <a class="dropdown-item" href="myprofile.php">Min profil</a>
                     <a class="dropdown-item" href="myposts.php">Mina inlägg</a>
                     <a class="dropdown-item" href="settings.php">Inställningar</a>
                     <a class="dropdown-item" href="topusers.php">Topplista</a>

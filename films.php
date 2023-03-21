@@ -16,14 +16,11 @@ include("includes/config.php");
 <body>
     <header>
         <?php
-
         if (isset($_SESSION['username'])) {
-            include("includes/nav_loggedin.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 
@@ -59,8 +56,8 @@ include("includes/config.php");
                     $newpost = new Newpost();
 
                     $blogs = $newpost->printUsers();
-                    
-                    foreach ($blogs as $users){
+
+                    foreach ($blogs as $users) {
                         echo "<li > <a class='link' style='text-decoration:underline;' href='user.php?username=" . $users['username'] .  "'>" . $users['username'] . "</a></li>";
                     }
                     ?>
@@ -82,11 +79,11 @@ include("includes/config.php");
                     <img class='post-image' src='postsimages/" . $post['filename'] . "' alt='Bild " . $post['id'] . ", uppladdat av " . $post['username'] . "'>
                     <h1 class='post-title'>" . $post['title'] . " <span class='post-span'>(" . $post['year'] . ")</span> </h1> 
                     <p class='post-media'>" . $post['media'] . " &nbsp; &#x2022; &nbsp; " . $post['genre'] . " &nbsp; &#x2022; &nbsp; " . $post['grade'] . "/10 <img src='images/symbols/star.png' alt='stjärna, betyg' width='18' height='18' style='margin-bottom:0.3em;'> </p>
-                    <p class='post-username'>" . "<a style='color:white;text-decoration:underline;' href='user.php?username=". $post['username'] ."'>" . $post['username'] . "</a>" . "&nbsp; &#x2022; &nbsp; " . $post['created'] . "</p> 
+                    <p class='post-username'>" . "<a style='color:white;text-decoration:underline;' href='user.php?username=" . $post['username'] . "'>" . $post['username'] . "</a>" . "&nbsp; &#x2022; &nbsp; " . $post['created'] . "</p> 
                     <p class='post-comment'>" . $post['comment'] . "</p> 
-                    <a class='post-btn read-btn' href='info.php?id=". $post['id'] ."'>Läs mer</a>
+                    <a class='post-btn read-btn' href='info.php?id=" . $post['id'] . "'>Läs mer</a>
                 </div>";
-                } 
+                }
                 ?>
 
 

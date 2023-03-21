@@ -23,17 +23,16 @@ if (!isset($_SESSION['username'])) {
     <header>
         <?php
         if (isset($_SESSION['username'])) {
-            include("includes/nav_loggedin.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 
         <div class="createpost-wrapper container">
 
-            <form method="POST"  class="form-createpost" enctype="multipart/form-data">
+            <form method="POST" class="form-createpost" enctype="multipart/form-data">
                 <h1 class="title">Kontoinställningar</h1>
 
                 <?php
@@ -43,8 +42,8 @@ if (!isset($_SESSION['username'])) {
                     $username = $_SESSION['username'];
                 }
 
-                 //checks if settings is update and then echo message
-                 if (isset($_SESSION['settingsupdate'])) {
+                //checks if settings is update and then echo message
+                if (isset($_SESSION['settingsupdate'])) {
                     echo "<p class='success message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['settingsupdate'] . "</p>";
                 }
                 unset($_SESSION['settingsupdate']);
@@ -58,11 +57,11 @@ if (!isset($_SESSION['username'])) {
                 // print_r($info); // or var_dump($data);
                 // echo "</pre>";
 
-            
+
 
                 if (isset($_POST['firstname'])) {
 
-          
+
                     $firstname = $_POST['firstname'];
                     $lastname = $_POST['lastname'];
                     $bio = strip_tags($_POST['bio']);
@@ -86,7 +85,7 @@ if (!isset($_SESSION['username'])) {
                         echo "<p class='error message'> <i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Biografin får max innehålla 200 teceken!</p>";
                     }
 
-                    
+
 
                     if ($newuser->addUserInfo($firstname, $lastname, $bio, $file, $id, $fileold)) {
                         //if true
@@ -127,7 +126,7 @@ if (!isset($_SESSION['username'])) {
 
                 <?php
 
-               
+
 
                 ?>
 

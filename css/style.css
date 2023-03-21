@@ -24,10 +24,9 @@ main {
 
 footer {
     height: 30em;
-    background-color: rgb(8, 8, 8);
-    color: white;
-    margin-top: -1em;
-    /* remove white gap between main and footer*/
+    background-color: rgb(21, 21, 21);
+    color: rgb(215, 215, 215);
+    /* margin-top: -1em; */ /* remove white gap between main and footer*/
 
 }
 
@@ -992,15 +991,13 @@ picture img {
 
 
 
-
+/* 
 
 
 .topnav {
     display: grid;
-    /* margin: auto; */
     grid:
         'one two three';
-    /* grid-gap: 3rem; */
     grid-template-columns: 0.5fr 2fr 0.5fr;
 
 
@@ -1132,12 +1129,12 @@ picture img {
 
     .topnav.topnav.responsive {
         display: grid;
-        /* margin: auto; */
+
         grid:
             'one '
             'two'
             'three';
-        /* grid-gap: 3rem; */
+
         grid-template-columns: 0.5fr 2fr 0.5fr;
         overflow: hidden;
         background-color: #000000;
@@ -1197,7 +1194,7 @@ picture img {
         place-self: center;
     }
 
-}
+} */
 
 
 
@@ -1206,16 +1203,15 @@ picture img {
 
 
 
-
-
-.navbar a {
-    padding: 0.5em 2em;
-
-}
 
 .navbar {
     background-color: black !important;
     font-size: 1.2em;
+    padding: 1em !important;
+}
+.navbar a {
+    padding: 0.5em 2em;
+
 }
 
 .navbar li {
@@ -1236,7 +1232,6 @@ picture img {
 
 .dropdown {
     padding-top: 0.7em;
-    margin-left: 1em;
 }
 
 .dropdown:focus {
@@ -1267,7 +1262,7 @@ picture img {
 }
 
 .navbar-toggler {
-    padding-right: 10% !important;
+    padding-right: 17% !important;
     width: 2em !important;
     border: none !important;
     color: white !important;
@@ -1300,8 +1295,23 @@ picture img {
     margin: 0;
     display: none;
 }
-
-
+.logo {
+    color: #be0909 !important;
+    text-shadow: 1px 1px 10px #be0909, 1px 1px 4px #be0909 !important;
+    font-size: 2.5em !important;
+    font-weight: 100;
+    font-family: 'Great Vibes', cursive;
+}
+.logo:hover {
+    text-decoration: none;
+}
+.vl {
+    border-left: 1px solid white;
+    height: 1.5em;
+    margin-top: 1.25em;
+    margin-left: 1em !important;
+    padding-right: 1em;
+  }
 
 
 @media screen and (max-width: 992px) {
@@ -1335,4 +1345,14 @@ picture img {
     .square{
         margin-top: 1em;
     }
+    .logo {
+        color: #be0909 !important;
+        text-shadow: 1px 1px 10px #be0909, 1px 1px 4px #be0909 !important;
+        font-size: 2em !important;
+        font-weight: 100;
+        font-family: 'Great Vibes', cursive;
+    }
+    .vl {
+        display:none;
+      }
 }

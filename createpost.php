@@ -24,14 +24,11 @@ if (!isset($_SESSION['username'])) {
 
     <header>
         <?php
-
         if (isset($_SESSION['username'])) {
-            include("includes/nav_loggedin.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 

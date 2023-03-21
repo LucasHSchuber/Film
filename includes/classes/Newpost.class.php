@@ -39,8 +39,8 @@ class Newpost
 
         if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
             if (file_exists("postsimages/" . $_FILES['file']['name'])) {
-                header("location: createpost.php");
                 $_SESSION['fileexists'] = "Filen " . $_FILES['file']['name'] . " finns redan, välj en annan fil!";
+                header("location: createpost.php");
                 return false;
             } else {
                 //flyttar filen till rätt katalog
@@ -55,8 +55,8 @@ class Newpost
                 //SQL fråga
                 $sql = "INSERT INTO posts(title, year, comment, media, genre, grade, username, filename)VALUES('$title', '$year', '$comment', '$media', '$genre', '$grade', '$username', '$file');";
                 $this->db->query($sql);
-                header("location: index.php");
                 $_SESSION['postcreated'] = "Ditt inlägg har publicerats!";
+                header("location: index.php");
                 return true;
             }
         } else {
@@ -69,8 +69,8 @@ class Newpost
             //SQL fråga
             $sql = "INSERT INTO posts(title, year, comment, media, genre, grade, username)VALUES('$title', '$year', '$comment', '$media', '$genre', '$grade', '$username');";
             $this->db->query($sql);
-            header("location: index.php");
             $_SESSION['postcreated'] = "Ditt inlägg har publicerats!";
+            header("location: index.php");
             return true;
         }
     }

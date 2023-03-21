@@ -293,7 +293,7 @@ class Newuser
              //SQL fråga
              $sql = "UPDATE users SET firstname = '$firstname', lastname = '$lastname', bio = '$bio', filename = '$file' WHERE id = '$id';";
              $this->db->query($sql);
-             header("location: settings.php");
+             
              $_SESSION['settingsupdate'] = "Dina inställningar har uppdaterats!";
              return true;
         }

@@ -17,14 +17,11 @@ include("includes/config.php");
 <body>
     <header>
         <?php
-
         if (isset($_SESSION['username'])) {
-            include("includes/nav_loggedin.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 
@@ -38,7 +35,7 @@ include("includes/config.php");
                     <button class="tablinks" onclick="openCity(event, 'posts')">Antal inlägg</button>
                 </div>
 
-<!-- 
+                <!-- 
                 <div class="toplist-btn-wrapper">
                     <button id="visit-info-btn" class="toplist-btn visit" onclick="openVisits()">Antal besök</button>
                     <button id="posts-info-btn" class="toplist-btn posts" onclick="openPosts()">Antal inlägg</button>
@@ -68,7 +65,7 @@ include("includes/config.php");
                         </td>
                         <td>"
                             . $list['click'] .
-                        "</td> 
+                            "</td> 
                     </tr>";
                     }
 
@@ -109,12 +106,12 @@ include("includes/config.php");
                         </td>
                         <td>
                         <a href='info.php?id=" . $list['id'] . "'>"
-                        . $list['title'] .
-                        "</a>  
+                            . $list['title'] .
+                            "</a>  
                         </td> 
                         <td>"
                             .  $list['click'] .
-                        "</td> 
+                            "</td> 
                     </tr>";
                     }
 

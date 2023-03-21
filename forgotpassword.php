@@ -19,13 +19,11 @@ include("includes/config.php");
 
     <header>
         <?php
-
         if (isset($_SESSION['username'])) {
-            header("location: index.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 
@@ -55,7 +53,7 @@ include("includes/config.php");
                         $memory = strtolower($_POST['memory']);
 
                         $succes = true; // if all posts are OK
-                        
+
 
                         if (!$newuser->setEmailMemoryPassword($email, $memory)) {
                             $succes = false;

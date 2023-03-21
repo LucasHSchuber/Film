@@ -22,14 +22,11 @@ if (!isset($_SESSION['username'])) {
 <body>
     <header>
         <?php
-
         if (isset($_SESSION['username'])) {
-            include("includes/nav_loggedin.php");
+            include("includes/navbar_loggedin.php");
         } else {
-            include("includes/nav.php");
-        }
-
-        ?>
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 
@@ -80,7 +77,7 @@ if (!isset($_SESSION['username'])) {
                         $file = $_FILES['file'];
                         $fileold = $list['filename'];
 
-                        $sucess = true;// if all posts are OK
+                        $sucess = true; // if all posts are OK
 
                         if (!$newpost->setTitle($title)) {
                             $succes = false;
@@ -96,7 +93,6 @@ if (!isset($_SESSION['username'])) {
                         }
 
                         if ($newpost->addEditPost($title, $id, $year, $comment, $media, $genre, $grade, $file, $fileold)) {
-
                         }
                     }
 
@@ -115,49 +111,103 @@ if (!isset($_SESSION['username'])) {
                         <div>
                             <label>Media:</label>
                             <select name="media" id="media">
-                                <option value="Film" <?php if($list['media'] == 'Film'){echo 'selected';} ?> >Film</option>
-                                <option value="Serie" <?php if($list['media'] == 'Serie'){echo 'selected';} ?> >Serie</option>
-                                <option value="Dokumentär" <?php if($list['media'] == 'Dokumentär'){echo 'selected';} ?> >Dokumentär</option>
+                                <option value="Film" <?php if ($list['media'] == 'Film') {
+                                                            echo 'selected';
+                                                        } ?>>Film</option>
+                                <option value="Serie" <?php if ($list['media'] == 'Serie') {
+                                                            echo 'selected';
+                                                        } ?>>Serie</option>
+                                <option value="Dokumentär" <?php if ($list['media'] == 'Dokumentär') {
+                                                                echo 'selected';
+                                                            } ?>>Dokumentär</option>
                             </select>
                         </div>
                         <div>
                             <label>Genre:</label>
                             <select name="genre" id="genre">
-                                <option value="Action" <?php if($list['genre'] == 'Action'){echo 'selected';} ?> >Action</option>
-                                <option value="Drama" <?php if($list['genre'] == 'Drama'){echo 'selected';} ?>>Drama</option>
-                                <option value="Historia" <?php if($list['genre'] == 'Historia'){echo 'selected';} ?>>Historia</option>
-                                <option value="Hjärnskrynklare" <?php if($list['genre'] == 'Hjärnskrynklare'){echo 'selected';} ?>>Hjärnskrynklare</option>
-                                <option value="Komedi" <?php if($list['genre'] == 'Komedi'){echo 'selected';} ?>>Komedi</option>
-                                <option value="Kriminalare" <?php if($list['genre'] == 'Kriminalare'){echo 'selected';} ?>>Kriminalare</option>
-                                <option value="Mystik" <?php if($list['genre'] == 'Mystik'){echo 'selected';} ?>>Mystik</option>
-                                <option value="Romantik" <?php if($list['genre'] == 'Romantik'){echo 'selected';} ?>>Romantik</option>
-                                <option value="Rysare" <?php if($list['genre'] == 'Rysare'){echo 'selected';} ?>>Rysare</option>
-                                <option value="Sci-fi" <?php if($list['genre'] == 'Sci-fi'){echo 'selected';} ?>>Sci-fi</option>
-                                <option value="Skräck" <?php if($list['genre'] == 'Skräck'){echo 'selected';} ?>>Skräck</option>
-                                <option value="Thriller" <?php if($list['genre'] == 'Thriller'){echo 'selected';} ?>>Thriller</option>
-                                <option value="Western" <?php if($list['genre'] == 'Western'){echo 'selected';} ?>>Western</option>
-                                <option value="Äventyr" <?php if($list['genre'] == 'Äventyr'){echo 'selected';} ?>>Äventyr</option>
-                                
+                                <option value="Action" <?php if ($list['genre'] == 'Action') {
+                                                            echo 'selected';
+                                                        } ?>>Action</option>
+                                <option value="Drama" <?php if ($list['genre'] == 'Drama') {
+                                                            echo 'selected';
+                                                        } ?>>Drama</option>
+                                <option value="Historia" <?php if ($list['genre'] == 'Historia') {
+                                                                echo 'selected';
+                                                            } ?>>Historia</option>
+                                <option value="Hjärnskrynklare" <?php if ($list['genre'] == 'Hjärnskrynklare') {
+                                                                    echo 'selected';
+                                                                } ?>>Hjärnskrynklare</option>
+                                <option value="Komedi" <?php if ($list['genre'] == 'Komedi') {
+                                                            echo 'selected';
+                                                        } ?>>Komedi</option>
+                                <option value="Kriminalare" <?php if ($list['genre'] == 'Kriminalare') {
+                                                                echo 'selected';
+                                                            } ?>>Kriminalare</option>
+                                <option value="Mystik" <?php if ($list['genre'] == 'Mystik') {
+                                                            echo 'selected';
+                                                        } ?>>Mystik</option>
+                                <option value="Romantik" <?php if ($list['genre'] == 'Romantik') {
+                                                                echo 'selected';
+                                                            } ?>>Romantik</option>
+                                <option value="Rysare" <?php if ($list['genre'] == 'Rysare') {
+                                                            echo 'selected';
+                                                        } ?>>Rysare</option>
+                                <option value="Sci-fi" <?php if ($list['genre'] == 'Sci-fi') {
+                                                            echo 'selected';
+                                                        } ?>>Sci-fi</option>
+                                <option value="Skräck" <?php if ($list['genre'] == 'Skräck') {
+                                                            echo 'selected';
+                                                        } ?>>Skräck</option>
+                                <option value="Thriller" <?php if ($list['genre'] == 'Thriller') {
+                                                                echo 'selected';
+                                                            } ?>>Thriller</option>
+                                <option value="Western" <?php if ($list['genre'] == 'Western') {
+                                                            echo 'selected';
+                                                        } ?>>Western</option>
+                                <option value="Äventyr" <?php if ($list['genre'] == 'Äventyr') {
+                                                            echo 'selected';
+                                                        } ?>>Äventyr</option>
+
                             </select>
                         </div>
                         <div>
                             <label>Betyg:</label>
                             <select name="grade" id="grade">
-                                <option value="1"  <?php if($list['grade'] == '1'){echo 'selected';} ?> >1/10 </option>
-                                <option value="2" <?php if($list['grade'] == '2'){echo 'selected';} ?>>2/10</option>
-                                <option value="3" <?php if($list['grade'] == '3'){echo 'selected';} ?>>3/10</option>
-                                <option value="4" <?php if($list['grade'] == '4'){echo 'selected';} ?>>4/10</option>
-                                <option value="5" <?php if($list['grade'] == '5'){echo 'selected';} ?>>5/10</option>
-                                <option value="6" <?php if($list['grade'] == '6'){echo 'selected';} ?>>6/10</option>
-                                <option value="7" <?php if($list['grade'] == '7'){echo 'selected';} ?>>7/10</option>
-                                <option value="8" <?php if($list['grade'] == '8'){echo 'selected';} ?>>8/10</option>
-                                <option value="9" <?php if($list['grade'] == '9'){echo 'selected';} ?>>9/10</option>
-                                <option value="10" <?php if($list['grade'] == '10'){echo 'selected';} ?>>10/10</option>
+                                <option value="1" <?php if ($list['grade'] == '1') {
+                                                        echo 'selected';
+                                                    } ?>>1/10 </option>
+                                <option value="2" <?php if ($list['grade'] == '2') {
+                                                        echo 'selected';
+                                                    } ?>>2/10</option>
+                                <option value="3" <?php if ($list['grade'] == '3') {
+                                                        echo 'selected';
+                                                    } ?>>3/10</option>
+                                <option value="4" <?php if ($list['grade'] == '4') {
+                                                        echo 'selected';
+                                                    } ?>>4/10</option>
+                                <option value="5" <?php if ($list['grade'] == '5') {
+                                                        echo 'selected';
+                                                    } ?>>5/10</option>
+                                <option value="6" <?php if ($list['grade'] == '6') {
+                                                        echo 'selected';
+                                                    } ?>>6/10</option>
+                                <option value="7" <?php if ($list['grade'] == '7') {
+                                                        echo 'selected';
+                                                    } ?>>7/10</option>
+                                <option value="8" <?php if ($list['grade'] == '8') {
+                                                        echo 'selected';
+                                                    } ?>>8/10</option>
+                                <option value="9" <?php if ($list['grade'] == '9') {
+                                                        echo 'selected';
+                                                    } ?>>9/10</option>
+                                <option value="10" <?php if ($list['grade'] == '10') {
+                                                        echo 'selected';
+                                                    } ?>>10/10</option>
                             </select>
                         </div>
                     </div> <br>
                     <label for="file" style="color:white !important;">Bild</label>
-                    <input class="input-form" style="color:white !important;" type="file" name="file" id="file" ><br><br>
+                    <input class="input-form" style="color:white !important;" type="file" name="file" id="file"><br><br>
                     <button class="login-btn" type="submit"><a>Klar &nbsp;<i class="fa-solid fa-check"></i></a></button><br><br>
                 </form>
 

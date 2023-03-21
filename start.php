@@ -16,8 +16,11 @@ include("includes/config.php");
 <body>
     <header>
         <?php
-        include("includes/nav_loggedin.php");
-        ?>
+        if (isset($_SESSION['username'])) {
+            include("includes/navbar_loggedin.php");
+        } else {
+            include("includes/navbar.php");
+        }        ?>
     </header>
     <main>
 
