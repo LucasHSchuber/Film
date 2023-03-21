@@ -114,7 +114,7 @@ if (!isset($_SESSION['username'])) {
                 <input class="input-form" type="password" name="password" id="password" disabled value="<?= $info['password']; ?>"><br>
                 <label for="repeatpassword">Upprepa lösenord: *</label><br>
                 <input class="input-form" type="password" name="repeatpassword" id="repeatpassword" disabled value="<?= $info['password']; ?>"><br><br><br><br>
-                <button class="login-btn" type="submit">Ändra kontoinställningar &nbsp;<i class="fa-solid fa-check"></i></button><br><br>
+                <button class="login-btn" type="submit">Spara  &nbsp;<i class="fa-solid fa-check"></i></button><br><br>
             </form>
 
 

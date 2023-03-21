@@ -33,7 +33,7 @@
                 </div>
             </div>
             <li class="nav-item">
-                <a class="nav-link square" href="createpost.php "> &nbsp;<i class="fa-regular fa-1x fa-square-plus"></i></a>
+                <a class="nav-link square" href="createpost.php "> Nytt inlägg &nbsp;<i class="fa-regular fa-1x fa-square-plus"></i></a>
             </li>
             
         </ul>

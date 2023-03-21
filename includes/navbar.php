@@ -22,7 +22,7 @@
                 <a class="nav-link" href="topusers.php">Topplista</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.php"><i class="fa-solid fa-1x fa-arrow-right-to-bracket"></i></a>
+                <a class="nav-link" href="login.php">Logga in &nbsp;<i class="fa-solid fa-1x fa-arrow-right-to-bracket"></i></a>
             </li>
 
         </ul>

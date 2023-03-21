@@ -118,7 +118,7 @@ include("includes/head.php");
                     <label for="email">Email: *</label><br>
                     <input class="input-form" type="text" name="email" id="email" value="<?= $email; ?>"><br>
                     <label for="memory">Namnet på ditt första husdjur (för återställning av lösenord):</label><br>
-                    <input class="input-form" type="text" name="memory" id="memory" value="<?= $memory; ?>"><br>
+                    <input class="input-form" type="password" name="memory" id="memory" value="<?= $memory; ?>"><br>
                     <label for="username">Användarnamn: *</label><br>
                     <input class="input-form" type="text" name="username" id="username" value="<?= $username; ?>"><br>
                     <label for="password">Lösenord: *</label><br>

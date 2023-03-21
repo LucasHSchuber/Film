@@ -52,6 +52,16 @@ if (!isset($_SESSION['username'])) {
                     //instans
                     $newpost = new Newpost();
 
+                    //default values
+                    $title = "";
+                    $year = "";
+                    $comment = "";
+                    $media = "";
+                    $genre = "";
+                    $grade = "";
+                    $username = "";
+
+
                     // && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg"))
                     if (isset($_POST['title'])) {
 
@@ -96,7 +106,13 @@ if (!isset($_SESSION['username'])) {
                             //if true
 
                             //default values
-
+                            $title = "";
+                            $year = "";
+                            $comment = "";
+                            $media = "";
+                            $genre = "";
+                            $grade = "";
+                            $username = "";
                         }
                     }
 
@@ -105,11 +121,11 @@ if (!isset($_SESSION['username'])) {
                     ?>
 
                     <label for="title">Titel: *</label><br>
-                    <input class="input-form" type="text" name="title" id="title"><br>
+                    <input class="input-form" type="text" name="title" id="title" value="<?= $title; ?>"><br>
                     <label for="year">År: *</label><br>
-                    <input class="input-form year" type="number" name="year" id="year"><br>
+                    <input class="input-form year" type="number" name="year" id="year" value="<?= $year; ?>"><br>
                     <label for="comment">Kommentar: *</label><br>
-                    <textarea class="input-form" name="comment" id="comment" rows="3" style="padding:0.5em!important;"></textarea>
+                    <textarea class="input-form" name="comment" id="comment" rows="3" style="padding:0.5em!important;"><?= $comment; ?></textarea>
                     <div class="select-div">
                         <div>
                             <label>Media: *</label>
