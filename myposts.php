@@ -32,7 +32,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="wrapper">
 
-            <h1 class="title" style="margin:auto;width:80%;margin-bottom:1em;">Mina inlägg</h1>
+            <h1 class="title" style="margin:auto;width:80%;margin-bottom:1em;">Hantera inlägg</h1>
 
             <section class="info-post">
 

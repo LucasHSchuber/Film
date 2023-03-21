@@ -100,7 +100,7 @@ if (isset($_POST['firstname'])) {
         <div class="createpost-wrapper container">
 
             <form method="POST" class="form-createpost" enctype="multipart/form-data">
-                <h1 class="title">Kontoinställningar</h1>
+                <h1 class="title">Inställningar</h1>
 
                 <?php
 
