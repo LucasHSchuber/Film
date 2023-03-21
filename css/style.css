@@ -960,6 +960,7 @@ picture img {
 
     .profile-info {
         padding-top: 2em;
+        text-align: left;
     }
 
     .profile-picture {
@@ -991,6 +992,9 @@ picture img {
 
 
 
+
+
+
 .topnav {
     display: grid;
     /* margin: auto; */
@@ -1002,6 +1006,8 @@ picture img {
 
     overflow: hidden;
     background-color: #000000;
+    padding: 2em;
+    visibility: visible;
 }
 
 .topnav-grid-box-one:nth-child(1) {
@@ -1015,6 +1021,7 @@ picture img {
 .topnav-grid-box-three:nth-child(3) {
     grid-area: three;
 }
+
 
 .topnav a {
     float: left;
@@ -1090,9 +1097,11 @@ picture img {
     font-weight: 100;
     font-family: 'Great Vibes', cursive;
 }
-#logo:hover{
+
+#logo:hover {
     background-color: black !important;
 }
+
 .hr-nav {
     border: 0.2px solid rgb(225, 225, 225) !important;
     margin: 0;
@@ -1105,7 +1114,8 @@ picture img {
     .drop .dropbtn {
         display: none;
     }
-    #logo{
+
+    #logo {
         display: block;
     }
 
@@ -1113,23 +1123,28 @@ picture img {
         float: right;
         display: block;
     }
+
     .dropdown-content {
         border: none;
         background-color: #000000;
 
     }
-    .topnav {
+
+    .topnav.topnav.responsive {
         display: grid;
         /* margin: auto; */
         grid:
-            'one' 
-            'two' 
+            'one '
+            'two'
             'three';
         /* grid-gap: 3rem; */
         grid-template-columns: 0.5fr 2fr 0.5fr;
         overflow: hidden;
         background-color: #000000;
     }
+
+
+
 }
 
 @media screen and (max-width: 772px) {
@@ -1137,12 +1152,16 @@ picture img {
 
     .topnav.responsive {
         position: relative;
+
     }
 
     .topnav.responsive .icon {
-        position: absolute;
-        right: 0;
-        top: 0;
+
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 1;
+        place-self: center;
     }
 
     .topnav.responsive a {
@@ -1157,11 +1176,163 @@ picture img {
 
     .topnav.responsive .dropdown-content {
         position: relative;
+
     }
 
     .topnav.responsive .drop .dropbtn {
         display: block;
         width: 100%;
         text-align: left;
+    }
+
+    .icon {
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 1;
+        place-self: center;
+    }
+
+    .topnav.responsive #logo {
+        place-self: center;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+.navbar a {
+    padding: 0.5em 2em;
+
+}
+
+.navbar {
+    background-color: black !important;
+    font-size: 1.2em;
+}
+
+.navbar li {
+    padding: 0.5em;
+}
+
+.navbar li a {
+    color: white !important;
+}
+
+.navbar li a:hover {
+    color: rgb(212, 212, 212) !important;
+}
+
+.navbar-nav li {
+    padding-left: 1.5em;
+}
+
+.dropdown {
+    padding-top: 0.7em;
+    margin-left: 1em;
+}
+
+.dropdown:focus {
+    outline: none !important;
+}
+
+.dropdown-toggle {
+    background-color: black !important;
+    border: none !important;
+    font-size: 1em !important;
+}
+
+.dropdown-menu {
+    background-color: rgb(11, 11, 11) !important;
+    color: white !important;
+
+}
+
+.dropdown-menu a {
+    color: white !important;
+    font-size: 1.2em;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgb(9, 9, 9) !important;
+    color: rgb(238, 238, 238) !important;
+
+}
+
+.navbar-toggler {
+    padding-right: 10% !important;
+    width: 2em !important;
+    border: none !important;
+    color: white !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='4' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler-icon {
+    border-color: white;
+
+}
+
+.hr-navbar {
+    border: 0.2px solid rgb(225, 225, 225) !important;
+    margin: 0;
+    display: block;
+}
+
+.hr-navbar-res {
+    border: 0.2px solid rgb(225, 225, 225) !important;
+    margin: 0;
+    display: none;
+}
+
+
+
+
+@media screen and (max-width: 992px) {
+
+    .navbar {
+        font-size: 1.6em;
+        text-align: center;
+    }
+
+    .dropdown-menu a {
+        text-align: center;
+    }
+
+    .hr-navbar {
+        display: none !important;
+    }
+
+    .dropdown-menu a {
+        padding: 0.6em;
+        font-size: 1.2em;
+    }
+
+    .hr-navbar-res {
+        border: 0.2px solid rgb(225, 225, 225) !important;
+        margin: 0;
+        display: block;
+        width: 25%;
+        margin: auto;
+        margin-top: 1em;
+    }
+    .square{
+        margin-top: 1em;
     }
 }

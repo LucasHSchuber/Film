@@ -20,7 +20,7 @@ include("includes/config.php");
         if (isset($_SESSION['username'])) {
             include("includes/nav_loggedin.php");
         } else {
-            include("includes/test.php");
+            include("includes/testny.php");
         }
 
         ?>
@@ -31,7 +31,7 @@ include("includes/config.php");
             <picture class="hero-image">
                 <source srcset="images/index_mellan.jpg" media="(min-width: 1521px)">
                 <source srcset="images/index_mellan.jpg" media="(min-width: 801px)">
-                <img src="images/index_small.jpg" alt="bild på en person på ett fjäll" />
+                <img src="images/index_small.jpg" alt="index, hero" >
             </picture>
         </div>
 

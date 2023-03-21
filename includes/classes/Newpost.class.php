@@ -44,8 +44,8 @@ class Newpost
                 return false;
             } else {
                 //flyttar filen till rätt katalog
-                move_uploaded_file($_FILES['file']['tmp_name'], "postsimages/" . $_FILES['file']['name']);
-                $file = $_FILES['file']['name'];
+                move_uploaded_file($_FILES['file']['tmp_name'], "postsimages/" . str_replace(' ', '', $_FILES['file']['name']));
+                $file = str_replace(' ', '', $_FILES['file']['name']);
 
                 //sanitera med real_escape_string
                 $title = $this->db->real_escape_string($title);
@@ -251,8 +251,8 @@ class Newpost
         if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
 
             //flyttar filen till rätt katalog
-            move_uploaded_file($_FILES['file']['tmp_name'], "postsimages/" . $_FILES['file']['name']);
-            $file = $_FILES['file']['name'];
+            move_uploaded_file($_FILES['file']['tmp_name'], "postsimages/" . str_replace(' ', '', $_FILES['file']['name']));
+            $file = str_replace(' ', '', $_FILES['file']['name']);
 
             $title = $this->db->real_escape_string($title);
             $year = $this->db->real_escape_string($year);

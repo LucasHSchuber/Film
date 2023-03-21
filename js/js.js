@@ -16,13 +16,18 @@ function openCity(evt, infotoggle) {
     evt.currentTarget.className += " active";
   }
 
-
+// let iconEl = document.getElementById("icon");
+// let style = window.getComputedStyle(iconEl);
 
   function Navbar() {
     let x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
       x.className += " responsive";
+
+      iconEl
     } else {
       x.className = "topnav";
+
+
     }
   }
