@@ -24,7 +24,7 @@ main {
 
 footer {
     height: 30em;
-    background-color: rgb(21, 21, 21);
+    background-color: rgb(12, 12, 12);
     color: rgb(215, 215, 215);
     /* margin-top: -1em; */ /* remove white gap between main and footer*/
 
@@ -313,8 +313,34 @@ picture img {
 .post-username {
     grid-area: usernameArea;
     font-size: 1.2em !important;
-    color: rgb(132, 132, 132) !important;
+    color: rgb(129, 129, 129) !important;
 }
+.sticky-createpost{
+    background-color: rgb(42, 42, 42);
+    padding: 0 1.2em;
+    font-size: 1.5em;
+    font-weight: 700;
+    z-index: 2;
+    bottom:6em;
+    right:0.5em;
+    position: fixed;
+    text-align: center;
+    line-height: 4em;
+    height: 4em;
+}
+.sticky-createpost a{
+    color:rgb(215, 215, 215);
+}
+.sticky-createpost:hover{
+    background-color: rgb(56, 56, 56);
+    transition: 0.3s ease;
+    color:rgb(241, 241, 241);
+}
+.sticky-createpost a:hover{
+    color:rgb(233, 233, 233);
+    text-decoration: none;
+}
+
 
 
 
@@ -1238,16 +1264,22 @@ picture img {
     outline: none !important;
 }
 
-.dropdown-toggle {
+.dropdown button{
     background-color: black !important;
     border: none !important;
     font-size: 1em !important;
 }
 
+.dropdown-toggle span{
+    color: white !important; 
+}
+.dropdown-toggle span:hover{
+    color: rgb(205, 205, 205) !important;
+}
+
 .dropdown-menu {
     background-color: rgb(11, 11, 11) !important;
     color: white !important;
-
 }
 
 .dropdown-menu a {
@@ -1257,7 +1289,7 @@ picture img {
 
 .dropdown-menu a:hover {
     background-color: rgb(9, 9, 9) !important;
-    color: rgb(238, 238, 238) !important;
+    color: rgb(205, 205, 205) !important;
 
 }
 
@@ -1285,7 +1317,7 @@ picture img {
 }
 
 .hr-navbar {
-    border: 0.2px solid rgb(225, 225, 225) !important;
+    border: 0.2px solid rgb(58, 58, 58) !important;
     margin: 0;
     display: block;
 }
@@ -1355,4 +1387,7 @@ picture img {
     .vl {
         display:none;
       }
+      .sticky-createpost{
+        display: none;
+    }
 }

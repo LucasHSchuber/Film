@@ -32,6 +32,8 @@ if (!isset($_SESSION['username'])) {
 
         <div class="wrapper">
 
+        <h1 class="title" style="margin:auto;width:80%;margin-bottom:1em;">Mina inlägg</h1>
+
             <section class="info-post">
 
                 <?php
@@ -82,6 +84,11 @@ if (!isset($_SESSION['username'])) {
 
 
         </div>
+
+        <div class="sticky-createpost">
+                <a class="" href="createpost.php "> Nytt inlägg &nbsp;<i class="fa-solid fa-plus"></i></a>
+        </div>
+
     </main>
 
     <footer>

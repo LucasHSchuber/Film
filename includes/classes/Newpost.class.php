@@ -36,7 +36,7 @@ class Newpost
         if (!$this->setMedia($media)) return false;
         if (!$this->setGrade($grade)) return false;
         if (!$this->setGenre($genre)) return false;
-
+        
         if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
             if (file_exists("postsimages/" . $_FILES['file']['name'])) {
                 $_SESSION['fileexists'] = "Filen " . $_FILES['file']['name'] . " finns redan, välj en annan fil!";
@@ -69,7 +69,7 @@ class Newpost
             //SQL fråga
             $sql = "INSERT INTO posts(title, year, comment, media, genre, grade, username)VALUES('$title', '$year', '$comment', '$media', '$genre', '$grade', '$username');";
             $this->db->query($sql);
-            $_SESSION['postcreated'] = "Ditt inlägg har publicerats!";
+            // $_SESSION['postcreated'] = "Ditt inlägg har publicerats!";
             header("location: index.php");
             return true;
         }

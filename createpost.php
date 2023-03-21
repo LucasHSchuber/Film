@@ -41,13 +41,11 @@ if (!isset($_SESSION['username'])) {
 
                     <?php
 
-
                     //checks if settings is update and then echo message
                     if (isset($_SESSION['fileexists'])) {
                         echo "<p class='error message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['fileexists'] . "</p>";
                     }
                     unset($_SESSION['fileexists']);
-
 
                     //instans
                     $newpost = new Newpost();
@@ -76,6 +74,21 @@ if (!isset($_SESSION['username'])) {
                         $file = $_FILES['file'];
 
                         $succes = true; // if all posts are OK
+
+
+
+                        // if (!$newpost->setTitle($title)) {
+                        //     $succes = false;
+                        //     $_SESSION['error_msg'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en titel!</p>";
+                        // }
+                       
+                        // if (isset($_SESSION['error_msg'])) {
+                        //     echo $_SESSION['error_msg'];
+                        //     unset($_SESSION['error_msg']); 
+                        // }
+
+
+
 
                         if (!$newpost->setTitle($title)) {
                             $succes = false;
@@ -115,8 +128,6 @@ if (!isset($_SESSION['username'])) {
                             $username = "";
                         }
                     }
-
-
 
                     ?>
 
