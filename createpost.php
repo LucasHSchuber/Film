@@ -6,6 +6,101 @@ if (!isset($_SESSION['username'])) {
     header("location: login.php?message=Du måste vara inloggad för att få åtkomst till denna sida.");
 }
 ?>
+<?php
+//instans
+$newpost = new Newpost();
+
+//default values
+$title = "";
+$year = "";
+$comment = "";
+$media = "";
+$genre = "";
+$grade = "";
+$username = "";
+
+
+// && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg"))
+if (isset($_POST['title'])) {
+
+
+    $title = strip_tags($_POST['title']);
+    $year = $_POST['year'];
+    $comment = strip_tags($_POST['comment']);
+    $media = $_POST['media'];
+    $genre = $_POST['genre'];
+    $grade = $_POST['grade'];
+    $username = $_SESSION['username'];
+    $file = $_FILES['file'];
+
+    $succes = true; // if all posts are OK
+
+    if (!$newpost->setTitle($title)) {
+        $succes = false;
+        $_SESSION['error_title'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en titel!</p>";
+    }
+    if (!$newpost->setYear($year)) {
+        $succes = false;
+        $_SESSION['error_year'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett år!</p>";
+    }
+    if (!$newpost->setComment($comment)) {
+        $succes = false;
+        $_SESSION['error_comment'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver skriva en kommentar!</p>";
+    }
+    if (!$newpost->setMedia($media)) {
+        $succes = false;
+        $_SESSION['error_media'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en typ av media!</p>";
+    }
+    if (!$newpost->setGenre($genre)) {
+        $succes = false;
+        $_SESSION['error_genre'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en genre!</p>";
+    }
+    if (!$newpost->setGrade($grade)) {
+        $succes = false;
+        $_SESSION['error_grade'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett betyg!</p>";
+    }
+
+
+
+    // if (!$newpost->setTitle($title)) {
+    //     $succes = false;
+    //     echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en titel!</p>";
+    // }
+    // if (!$newpost->setYear($year)) {
+    //     $succes = false;
+    //     echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett år!</p>";
+    // }
+    // if (!$newpost->setComment($comment)) {
+    //     $succes = false;
+    //     echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver skriva en kommentar!</p>";
+    // }
+    // if (!$newpost->setMedia($media)) {
+    //     $succes = false;
+    //     echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en typ av media!</p>";
+    // }
+    // if (!$newpost->setGenre($genre)) {
+    //     $succes = false;
+    //     echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en genre!</p>";
+    // }
+    // if (!$newpost->setGrade($grade)) {
+    //     $succes = false;
+    //     echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett betyg!</p>";
+    // }
+
+    if ($newpost->addPost($title, $year, $comment, $media, $genre, $grade, $username, $file)) {
+        //if true
+
+        //default values
+        $title = "";
+        $year = "";
+        $comment = "";
+        $media = "";
+        $genre = "";
+        $grade = "";
+        $username = "";
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="sv">
@@ -47,87 +142,32 @@ if (!isset($_SESSION['username'])) {
                     }
                     unset($_SESSION['fileexists']);
 
-                    //instans
-                    $newpost = new Newpost();
-
-                    //default values
-                    $title = "";
-                    $year = "";
-                    $comment = "";
-                    $media = "";
-                    $genre = "";
-                    $grade = "";
-                    $username = "";
-
-
-                    // && (isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg"))
-                    if (isset($_POST['title'])) {
-
-
-                        $title = strip_tags($_POST['title']);
-                        $year = $_POST['year'];
-                        $comment = strip_tags($_POST['comment']);
-                        $media = $_POST['media'];
-                        $genre = $_POST['genre'];
-                        $grade = $_POST['grade'];
-                        $username = $_SESSION['username'];
-                        $file = $_FILES['file'];
-
-                        $succes = true; // if all posts are OK
-
-
-
-                        // if (!$newpost->setTitle($title)) {
-                        //     $succes = false;
-                        //     $_SESSION['error_msg'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en titel!</p>";
-                        // }
-                       
-                        // if (isset($_SESSION['error_msg'])) {
-                        //     echo $_SESSION['error_msg'];
-                        //     unset($_SESSION['error_msg']); 
-                        // }
-
-
-
-
-                        if (!$newpost->setTitle($title)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en titel!</p>";
-                        }
-                        if (!$newpost->setYear($year)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett år!</p>";
-                        }
-                        if (!$newpost->setComment($comment)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver skriva en kommentar!</p>";
-                        }
-                        if (!$newpost->setMedia($media)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en typ av media!</p>";
-                        }
-                        if (!$newpost->setGenre($genre)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange en genre!</p>";
-                        }
-                        if (!$newpost->setGrade($grade)) {
-                            $succes = false;
-                            echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ett betyg!</p>";
-                        }
-
-                        if ($newpost->addPost($title, $year, $comment, $media, $genre, $grade, $username, $file)) {
-                            //if true
-
-                            //default values
-                            $title = "";
-                            $year = "";
-                            $comment = "";
-                            $media = "";
-                            $genre = "";
-                            $grade = "";
-                            $username = "";
-                        }
+                    // print all error messeges if success not true
+                    if (isset($_SESSION['error_title'])) {
+                        echo $_SESSION['error_title'];
+                        unset($_SESSION['error_title']); 
                     }
+                    if (isset($_SESSION['error_year'])) {
+                        echo $_SESSION['error_year'];
+                        unset($_SESSION['error_year']); 
+                    }
+                    if (isset($_SESSION['error_comment'])) {
+                        echo $_SESSION['error_comment'];
+                        unset($_SESSION['error_comment']); 
+                    }
+                    if (isset($_SESSION['error_media'])) {
+                        echo $_SESSION['error_media'];
+                        unset($_SESSION['error_media']); 
+                    }
+                    if (isset($_SESSION['error_genre'])) {
+                        echo $_SESSION['error_genre'];
+                        unset($_SESSION['error_genre']); 
+                    }
+                    if (isset($_SESSION['error_grade'])) {
+                        echo $_SESSION['error_grade'];
+                        unset($_SESSION['error_grade']); 
+                    }
+
 
                     ?>
 
@@ -136,7 +176,7 @@ if (!isset($_SESSION['username'])) {
                     <label for="year">År: *</label><br>
                     <input class="input-form year" type="number" name="year" id="year" value="<?= $year; ?>"><br>
                     <label for="comment">Kommentar: *</label><br>
-                    <textarea class="input-form" name="comment" id="comment" rows="3" style="padding:0.5em!important;"><?= $comment; ?></textarea>
+                    <textarea class="input-form" name="comment" id="comment" rows="5" style="padding:0.5em!important;"><?= $comment; ?></textarea>
                     <div class="select-div">
                         <div>
                             <label>Media: *</label>
@@ -198,10 +238,10 @@ if (!isset($_SESSION['username'])) {
         include("includes/footer.php");
         ?>
     </footer>
-
+<!-- 
     <script>
         CKEDITOR.replace('comment');
-    </script>
+    </script> -->
 
 </body>
 

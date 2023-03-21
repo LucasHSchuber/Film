@@ -277,25 +277,25 @@ class Newuser
             //SQL fråga
             $sql = "UPDATE users SET firstname = '$firstname', lastname = '$lastname', bio = '$bio', filename = '$file' WHERE id = '$id';";
             $this->db->query($sql);
-            header("location: settings.php");
             $_SESSION['settingsupdate'] = "Dina inställningar har uppdaterats!";
+            header("location: settings.php");
             return true;
-        } else{
+        } else {
 
             $file = $fileold;
 
-             //sanitera med read_escape_string
-             $firstname =  $this->db->real_escape_string($firstname);
-             $lastname =  $this->db->real_escape_string($lastname);
-             $bio = $this->db->real_escape_string($bio);
- 
- 
-             //SQL fråga
-             $sql = "UPDATE users SET firstname = '$firstname', lastname = '$lastname', bio = '$bio', filename = '$file' WHERE id = '$id';";
-             $this->db->query($sql);
-             
-             $_SESSION['settingsupdate'] = "Dina inställningar har uppdaterats!";
-             return true;
+            //sanitera med read_escape_string
+            $firstname =  $this->db->real_escape_string($firstname);
+            $lastname =  $this->db->real_escape_string($lastname);
+            $bio = $this->db->real_escape_string($bio);
+
+
+            //SQL fråga
+            $sql = "UPDATE users SET firstname = '$firstname', lastname = '$lastname', bio = '$bio', filename = '$file' WHERE id = '$id';";
+            $this->db->query($sql);
+            $_SESSION['settingsupdate'] = "Dina inställningar har uppdaterats!";
+            header("location: settings.php");
+            return true;
         }
     }
 

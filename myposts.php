@@ -32,9 +32,20 @@ if (!isset($_SESSION['username'])) {
 
         <div class="wrapper">
 
-        <h1 class="title" style="margin:auto;width:80%;margin-bottom:1em;">Mina inlägg</h1>
+            <h1 class="title" style="margin:auto;width:80%;margin-bottom:1em;">Mina inlägg</h1>
 
             <section class="info-post">
+
+                <?php
+
+                //checks if post is updated and then echo message
+                if (isset($_SESSION['postupdated'])) {
+                    echo "<p class='success message' style='margin:auto;width:80%;margin-bottom:2em;'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['postupdated'] . "</p>";
+                }
+                unset($_SESSION['postupdated']);
+
+                ?>
+
 
                 <?php
 
@@ -47,12 +58,6 @@ if (!isset($_SESSION['username'])) {
                     if ($newpost->deletePost($id)) {
                     }
                 }
-
-                //checks if post is updated and then echo message
-                if (isset($_SESSION['postupdated'])) {
-                    echo "<p class='success message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['postupdated'] . "</p>";
-                }
-                unset($_SESSION['postupdated']);
 
                 if (isset($_SESSION['username'])) {
                     $username = $_SESSION['username'];
@@ -86,7 +91,7 @@ if (!isset($_SESSION['username'])) {
         </div>
 
         <div class="sticky-createpost">
-                <a class="" href="createpost.php "> Nytt inlägg &nbsp;<i class="fa-solid fa-plus"></i></a>
+            <a class="" href="createpost.php "> Nytt inlägg &nbsp;<i class="fa-solid fa-plus"></i></a>
         </div>
 
     </main>

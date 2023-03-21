@@ -34,6 +34,16 @@ include("includes/config.php");
 
         <div class="wrapper">
 
+        <?php
+
+        //checks if post is created and then echo message
+        if (isset($_SESSION['postcreated'])) {
+            echo "<p class='success message'" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['postcreated'] . "</p>";
+        }
+        unset($_SESSION['postcreated']);
+        ?>
+
+
             <section class="box-one">
                 <p class="grid-box-one">flim &#x2022; blog.</p>
                 <h1 class="grid-box-one">Filmer. Serier. Dokumentärer. <br> Tips. Titta. Tipsa.</h1>
@@ -56,11 +66,7 @@ include("includes/config.php");
 
                 <?php
 
-                //checks if post is created and then echo message
-                if (isset($_SESSION['postcreated'])) {
-                    echo "<p class='success message'" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['postcreated'] . "</p>";
-                }
-                unset($_SESSION['postcreated']);
+
 
 
                 $num = (int)5;

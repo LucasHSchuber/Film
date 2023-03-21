@@ -69,7 +69,7 @@ class Newpost
             //SQL fråga
             $sql = "INSERT INTO posts(title, year, comment, media, genre, grade, username)VALUES('$title', '$year', '$comment', '$media', '$genre', '$grade', '$username');";
             $this->db->query($sql);
-            // $_SESSION['postcreated'] = "Ditt inlägg har publicerats!";
+            $_SESSION['postcreated'] = "Ditt inlägg har publicerats!";
             header("location: index.php");
             return true;
         }

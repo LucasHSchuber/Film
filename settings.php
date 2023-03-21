@@ -6,7 +6,74 @@ if (!isset($_SESSION['username'])) {
     header("location: login.php?message=Du måste vara inloggad för att få åtkomst till denna sida.");
 }
 ?>
+<?php
+//check is session variable is set
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+}
 
+//checks if settings is update and then echo message
+if (isset($_SESSION['settingsupdate'])) {
+    $_SESSION['settingsupdate_var'] = "<p class='success message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['settingsupdate'] . "</p>";
+}
+unset($_SESSION['settingsupdate']);
+
+
+//instans
+$newuser = new Newuser();
+
+$info = $newuser->getUserInfo($username);
+
+// echo "<pre>";
+// print_r($info); // or var_dump($data);
+// echo "</pre>";
+
+if (isset($_POST['firstname'])) {
+
+
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $bio = strip_tags($_POST['bio']);
+    $file = $_FILES['file'];
+    $id = $info['id'];
+    $fileold = $info['filename'];
+
+    $succes = true; // if all posts are OK
+
+    if (!$newuser->setFirstname($firstname)) {
+        $succes = false;
+        $_SESSION['error_firstname'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ditt förnamn!</p>";
+    }
+    if (!$newuser->setLastname($lastname)) {
+        $succes = false;
+        $_SESSION['error_lastname'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ditt förnamn!</p>";
+    }
+    if (!$newuser->setBio($bio)) {
+        $succes = false;
+        $_SESSION['error_bio'] = "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Biografin får innehålla max 200 teceken!</p>";
+    }
+
+
+    // if (!$newuser->setFirstname($firstname)) {
+    //     $succes = false;
+    //     echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ditt förnamn!</p>";
+    // }
+
+    // if (!$newuser->setLastname($lastname)) {
+    //     $succes = false;
+    //     echo "<p class='error message'> <i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ditt efternamn!</p>";
+    // }
+    // if (!$newuser->setBio($bio)) {
+    //     $succes = false;
+    //     echo "<p class='error message'> <i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Biografin får max innehålla 200 teceken!</p>";
+    // }
+
+    if ($newuser->addUserInfo($firstname, $lastname, $bio, $file, $id, $fileold)) {
+        //if true
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -37,62 +104,26 @@ if (!isset($_SESSION['username'])) {
 
                 <?php
 
-                //check is session variable is set
-                if (isset($_SESSION['username'])) {
-                    $username = $_SESSION['username'];
+                if (isset($_SESSION['settingsupdate_var'])) {
+                    echo $_SESSION['settingsupdate_var'];
+                    unset($_SESSION['settingsupdate_var']);
                 }
-
-                //checks if settings is update and then echo message
-                if (isset($_SESSION['settingsupdate'])) {
-                    echo "<p class='success message'>" . "<i class='fa-solid fa-check'></i>" . "&nbsp;" . $_SESSION['settingsupdate'] . "</p>";
+                // print all error messeges if success not true
+                if (isset($_SESSION['error_firstname'])) {
+                    echo $_SESSION['error_firstname'];
+                    unset($_SESSION['error_firstname']);
                 }
-                unset($_SESSION['settingsupdate']);
-
-                //instans
-                $newuser = new Newuser();
-
-                $info = $newuser->getUserInfo($username);
-
-                // echo "<pre>";
-                // print_r($info); // or var_dump($data);
-                // echo "</pre>";
-
-
-
-                if (isset($_POST['firstname'])) {
-
-
-                    $firstname = $_POST['firstname'];
-                    $lastname = $_POST['lastname'];
-                    $bio = strip_tags($_POST['bio']);
-                    $file = $_FILES['file'];
-                    $id = $info['id'];
-                    $fileold = $info['filename'];
-
-                    $succes = true; // if all posts are OK
-
-                    if (!$newuser->setFirstname($firstname)) {
-                        $succes = false;
-                        echo "<p class='error message'><i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ditt förnamn!</p>";
-                    }
-
-                    if (!$newuser->setLastname($lastname)) {
-                        $succes = false;
-                        echo "<p class='error message'> <i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Du behöver ange ditt efternamn!</p>";
-                    }
-                    if (!$newuser->setBio($bio)) {
-                        $succes = false;
-                        echo "<p class='error message'> <i class='fa-solid fa-triangle-exclamation'></i> &nbsp; Biografin får max innehålla 200 teceken!</p>";
-                    }
-
-
-
-                    if ($newuser->addUserInfo($firstname, $lastname, $bio, $file, $id, $fileold)) {
-                        //if true
-                    }
+                if (isset($_SESSION['error_lastname'])) {
+                    echo $_SESSION['error_lastname'];
+                    unset($_SESSION['error_lastname']);
+                }
+                if (isset($_SESSION['error_bio'])) {
+                    echo $_SESSION['error_bio'];
+                    unset($_SESSION['error_bio']);
                 }
 
                 ?>
+
                 <h3 class="subtitle">Profilinformation</h3>
                 <label for="username">Användarnamn: *</label><br>
                 <input class="input-form" type="text" name="username" id="username" disabled value="<?= $info['username']; ?>"><br>
@@ -114,7 +145,7 @@ if (!isset($_SESSION['username'])) {
                 <input class="input-form" type="password" name="password" id="password" disabled value="<?= $info['password']; ?>"><br>
                 <label for="repeatpassword">Upprepa lösenord: *</label><br>
                 <input class="input-form" type="password" name="repeatpassword" id="repeatpassword" disabled value="<?= $info['password']; ?>"><br><br><br><br>
-                <button class="login-btn" type="submit">Spara  &nbsp;<i class="fa-solid fa-check"></i></button><br><br>
+                <button class="login-btn" type="submit">Spara &nbsp;<i class="fa-solid fa-check"></i></button><br><br>
             </form>
 
 

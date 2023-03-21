@@ -24,7 +24,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="myprofile.php">Min profil</a>
-                    <a class="dropdown-item" href="myposts.php">Hantera mina inlägg</a>
+                    <a class="dropdown-item" href="myposts.php">Hantera inlägg</a>
                     <a class="dropdown-item" href="settings.php">Inställningar</a>
                     <a class="dropdown-item" href="topusers.php">Topplista</a>
                    <hr class="hr-navbar" style="margin-top:0.5em;">
