@@ -32,6 +32,12 @@ function openCity(evt, infotoggle) {
     }
   }
 
+  function deletePost(deleteid){
+    if(confirm("Är du säker på att du vill radera inlägget?")){
+      window.location.href='myposts.php?delete=' + deleteid +'';
+    }
+  }
+
   // function CookieBtn() {
   //   let cookieEl = document.getElementById("cookie");
   //   cookieEl.remove();

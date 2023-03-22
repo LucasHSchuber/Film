@@ -26,8 +26,8 @@ footer {
     height: 30em;
     background-color: rgb(12, 12, 12);
     color: rgb(215, 215, 215);
-    /* margin-top: -1em; */ /* remove white gap between main and footer*/
-
+    /* margin-top: -1em; */
+    /* remove white gap between main and footer*/
 }
 
 picture img {
@@ -263,7 +263,7 @@ picture img {
         'imgArea usernameArea  '
         'imgArea .  '
         'imgArea btnArea ';
-
+    grid-template-columns: 250px auto auto;
     column-gap: 3em;
     margin-top: 5em !important;
     margin-bottom: 7em !important;
@@ -292,6 +292,7 @@ picture img {
     background-repeat: no-repeat;
     grid-area: imgArea;
     border: 0.2px solid rgb(123, 123, 123);
+
 }
 
 .post-title {
@@ -315,31 +316,35 @@ picture img {
     font-size: 1.2em !important;
     color: rgb(129, 129, 129) !important;
 }
-.sticky-createpost{
+
+.sticky-createpost {
     background-color: rgb(42, 42, 42);
     padding: 0 1.2em;
     font-size: 1.5em;
     font-weight: 700;
     z-index: 2;
-    bottom:6em;
-    right:0.5em;
+    bottom: 6em;
+    right: 0.5em;
     position: fixed;
     text-align: center;
     line-height: 4em;
     height: 4em;
 }
-.sticky-createpost span{
-    color:rgb(215, 215, 215);
+
+.sticky-createpost span {
+    color: rgb(215, 215, 215);
 }
-.sticky-createpost:hover{
+
+.sticky-createpost:hover {
     background-color: rgb(56, 56, 56);
     transition: 0.3s ease;
-    color:rgb(241, 241, 241);
+    color: rgb(241, 241, 241);
     text-decoration: none;
 
 }
-.sticky-createpost span:hover{
-    color:rgb(233, 233, 233);
+
+.sticky-createpost span:hover {
+    color: rgb(233, 233, 233);
     text-decoration: none;
 }
 
@@ -358,7 +363,7 @@ picture img {
         'imgArea usernameArea  '
         'imgArea .  '
         'imgArea btnArea ';
-
+    grid-template-columns: 250px auto auto;
     column-gap: 3em;
     margin-top: 5em !important;
     margin-bottom: 7em !important;
@@ -897,7 +902,7 @@ picture img {
             'imgArea usernameArea  '
             'imgArea .  '
             'imgArea btnArea ';
-
+        grid-template-columns: 250px auto auto;
         column-gap: 3em;
         margin-top: 1em !important;
         margin-bottom: 7em !important;
@@ -905,8 +910,8 @@ picture img {
         width: 80%;
         max-width: 100em;
         margin: auto;
-
     }
+
 
     /* profile */
     .profile {
@@ -968,6 +973,28 @@ picture img {
     /*posts on index */
 
     .box-posts {
+        display: grid;
+        grid:
+            'titleArea   '
+            'mediaArea  '
+            'imgArea   '
+            'imgArea '
+            'usernameArea '
+            'commentArea '
+            'btnArea';
+
+        margin-top: 5em !important;
+        margin-bottom: 8em !important;
+        color: white;
+        width: 80%;
+        max-width: 100em;
+        margin: auto;
+
+    }
+
+    /*posts on index */
+
+    .box-my-posts {
         display: grid;
         grid:
             'titleArea   '
@@ -1059,6 +1086,11 @@ picture img {
     .profile-wrapper h2,
     .profile-wrapper p {
         font-size: 1.2em;
+    }
+
+    footer {
+        height: 25em;
+    
     }
 
 
@@ -1288,6 +1320,7 @@ picture img {
     font-size: 1.2em;
     padding: 1em !important;
 }
+
 .navbar a {
     padding: 0.5em 2em;
 
@@ -1317,16 +1350,17 @@ picture img {
     outline: none !important;
 }
 
-.dropdown button{
+.dropdown button {
     background-color: black !important;
     border: none !important;
     font-size: 1em !important;
 }
 
-.dropdown-toggle span{
-    color: white !important; 
+.dropdown-toggle span {
+    color: white !important;
 }
-.dropdown-toggle span:hover{
+
+.dropdown-toggle span:hover {
     color: rgb(205, 205, 205) !important;
 }
 
@@ -1380,6 +1414,7 @@ picture img {
     margin: 0;
     display: none;
 }
+
 .logo {
     color: #be0909 !important;
     text-shadow: 1px 1px 10px #be0909, 1px 1px 4px #be0909 !important;
@@ -1387,16 +1422,18 @@ picture img {
     font-weight: 100;
     font-family: 'Great Vibes', cursive;
 }
+
 .logo:hover {
     text-decoration: none;
 }
+
 .vl {
     border-left: 1px solid white;
     height: 1.5em;
     margin-top: 1.25em;
     margin-left: 1em !important;
     padding-right: 1em;
-  }
+}
 
 
 @media screen and (max-width: 992px) {
@@ -1427,9 +1464,11 @@ picture img {
         margin: auto;
         margin-top: 1em;
     }
-    .square{
+
+    .square {
         margin-top: 1em;
     }
+
     .logo {
         color: #be0909 !important;
         text-shadow: 1px 1px 10px #be0909, 1px 1px 4px #be0909 !important;
@@ -1437,10 +1476,12 @@ picture img {
         font-weight: 100;
         font-family: 'Great Vibes', cursive;
     }
+
     .vl {
-        display:none;
-      }
-      .sticky-createpost{
+        display: none;
+    }
+
+    .sticky-createpost {
         display: none;
     }
 }

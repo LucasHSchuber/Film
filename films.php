@@ -74,13 +74,18 @@ include("includes/config.php");
                 $list = $newpost->printPostsFilms();
 
                 foreach ($list as $index => $post) {
+                    if(strlen($post['comment']) > 175){
+                        $comment = substr($post['comment'], 0, 175) . "...";
+                        }else{
+                         $comment = $post['comment'];
+                        }
                     echo "
                     <div class='box-posts'> 
                     <img class='post-image' src='postsimages/" . $post['filename'] . "' alt='Bild " . $post['id'] . ", uppladdat av " . $post['username'] . "'>
                     <h1 class='post-title'>" . $post['title'] . " <span class='post-span'>(" . $post['year'] . ")</span> </h1> 
                     <p class='post-media'>" . $post['media'] . " &nbsp; &#x2022; &nbsp; " . $post['genre'] . " &nbsp; &#x2022; &nbsp; " . $post['grade'] . "/10 <img src='images/symbols/star.png' alt='stjärna, betyg' width='18' height='18' style='margin-bottom:0.3em;'> </p>
                     <p class='post-username'>" . "<a style='color:white;text-decoration:underline;' href='user.php?username=" . $post['username'] . "'>" . $post['username'] . "</a>" . "&nbsp; &#x2022; &nbsp; " . $post['created'] . "</p> 
-                    <p class='post-comment'>" . $post['comment'] . "</p> 
+                    <p class='post-comment'>" . $comment . "</p> 
                     <a class='post-btn read-btn' href='info.php?id=" . $post['id'] . "'>Läs mer</a>
                 </div>";
                 }

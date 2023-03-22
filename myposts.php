@@ -77,7 +77,7 @@ if (!isset($_SESSION['username'])) {
                     <p class='post-username'>" . "<a class='link' style='color:white;text-decoration:underline;' href='user.php?username=" . $post['username'] . "'>" . $post['username'] . "</a>" . "&nbsp; &#x2022; &nbsp; " . $post['created'] . "</p> 
                     <p class='post-comment'>" . $post['comment'] . "</p> 
                     <div class='post-btn'>
-                        <a class='delete-btn' href='myposts.php?delete=" . $post['id'] . "'>Ta bort &nbsp; <i class='fa-regular fa-trash-can'></i></a>
+                        <a class='delete-btn' style='margin-right:0.5em;' onclick='deletePost(" . $post['id'] . ")'>Ta bort &nbsp; <i class='fa-regular fa-trash-can'></i></a>
                         <a class='edit-btn' href='edit.php?id=" . $post['id'] . "'>Redigera &nbsp; <i class='fa-solid fa-pencil'></i></a>
                     </div>
                 </div>";
@@ -101,6 +101,9 @@ if (!isset($_SESSION['username'])) {
         include("includes/footer.php");
         ?>
     </footer>
+
+    <script src=js/js.js></script>
+
 </body>
 
 </html>
