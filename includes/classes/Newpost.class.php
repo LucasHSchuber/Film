@@ -38,7 +38,7 @@ class Newpost
         if (!$this->setGrade($grade)) return false;
         if (!$this->setGenre($genre)) return false;
         
-        if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
+        if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg" || $_FILES['file']['type'] == "image/svg" || $_FILES['file']['type'] == "image/gif" || $_FILES['file']['type'] == "image/tif" )) {
             if (file_exists("postsimages/" . $_FILES['file']['name'])) {
                 $_SESSION['fileexists'] = "Filen " . $_FILES['file']['name'] . " finns redan, välj en annan fil!";
                 header("location: createpost.php");
@@ -236,7 +236,7 @@ class Newpost
         if (!$this->setYear($year)) return false;
         if (!$this->setComment($comment)) return false;
 
-        if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg")) {
+        if ((isset($_FILES['file'])) && ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png" || $_FILES['file']['type'] == "image/jpg" || $_FILES['file']['type'] == "image/svg" || $_FILES['file']['type'] == "image/gif" || $_FILES['file']['type'] == "image/tif" )) {
 
             //flyttar filen till rätt katalog
             move_uploaded_file($_FILES['file']['tmp_name'], "postsimages/" . str_replace(' ', '', $_FILES['file']['name']));
