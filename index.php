@@ -48,7 +48,7 @@ include("includes/config.php");
                 <p class="grid-box-one">flim &#x2022; blog.</p>
                 <h1 class="grid-box-one">Filmer. Serier. Dokumentärer. <br> Tips. Titta. Tipsa.</h1>
                 <ol class="grid-box-one" style="list-style-type:none;">
-                    <a style='font-size:1.4em !important;'>Profiler:</a>
+                    <li style='font-size:1.4em !important;'>Profiler:</li>
                     <?php
                     $newpost = new Newpost();
 
