@@ -8,6 +8,9 @@
 <!-- Javascript -->
 <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
 
+ <!-- faveicon -->
+ <link rel="icon" type="image/x-icon" href="images/symbols/filmbrowser2.png">
+ <link rel="icon" type="image/x-icon" href="images/symbols/filmbrowser2.ico">
 
 <!-- font aweomse -->
 <script src="https://kit.fontawesome.com/c62fde443a.js" crossorigin="anonymous"></script>

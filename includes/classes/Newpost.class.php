@@ -17,8 +17,8 @@ class Newpost
     //constructor
     function __construct()
     {
-       // $this->db = new mysqli('localhost', 'root', 'root', 'blogsdb');
-       $this->db = new mysqli('studentmysql.miun.se', 'luha2200', 'jordenrunt', 'luha2200');
+       $this->db = new mysqli('localhost', 'root', 'root', 'blogsdb');
+    //    $this->db = new mysqli('studentmysql.miun.se', 'luha2200', 'jordenrunt', 'luha2200');
         if ($this->db->connect_errno > 0) {
             die('fel vid anslutning till databasen: ' . $this->db->connect_error);
         }

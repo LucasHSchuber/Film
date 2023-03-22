@@ -73,8 +73,8 @@ if (!isset($_SESSION['username'])) {
                 <div class='box-my-posts' id='$index'> 
                     <img class='post-image' src='postsimages/" . $post['filename'] . "' alt='Bild " . $post['id'] . ", uppladdat av " . $post['username'] . "'>
                     <h1 class='post-title'>" . $post['title'] . " <span class='post-span'>(" . $post['year'] . ")</span> </h1> 
-                    <p class='post-media'>" . $post['media'] . " &nbsp; &#x2022; &nbsp; " . $post['genre'] . " &nbsp; &#x2022; &nbsp; " . $post['grade'] . "/10 <img src='images/symbols/star.png' width='18px' height='18px' style='margin-bottom:0.3em;'> </p>
-                    <p class='post-username'>" . "<a class='link' style='color:white;text-decoration:underline; 'href='user.php?username=" . $post['username'] . "'>" . $post['username'] . "</a>" . "&nbsp; &#x2022; &nbsp; " . $post['created'] . "</p> 
+                    <p class='post-media'>" . $post['media'] . " &nbsp; &#x2022; &nbsp; " . $post['genre'] . " &nbsp; &#x2022; &nbsp; " . $post['grade'] . "/10 <img src='images/symbols/star.png' alt='stjärnor, betyg' width='18' height='18' style='margin-bottom:0.3em;'> </p>
+                    <p class='post-username'>" . "<a class='link' style='color:white;text-decoration:underline;' href='user.php?username=" . $post['username'] . "'>" . $post['username'] . "</a>" . "&nbsp; &#x2022; &nbsp; " . $post['created'] . "</p> 
                     <p class='post-comment'>" . $post['comment'] . "</p> 
                     <div class='post-btn'>
                         <a class='delete-btn' href='myposts.php?delete=" . $post['id'] . "'>Ta bort &nbsp; <i class='fa-regular fa-trash-can'></i></a>
@@ -90,9 +90,9 @@ if (!isset($_SESSION['username'])) {
 
         </div>
 
-        <div class="sticky-createpost">
-            <a class="" href="createpost.php "> Nytt inlägg &nbsp;<i class="fa-solid fa-plus"></i></a>
-        </div>
+        <a class="sticky-createpost" href="createpost.php">
+            <span class="">Nytt inlägg &nbsp;<i class="fa-solid fa-plus"></i></span>
+        </a>
 
     </main>
 

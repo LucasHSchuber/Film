@@ -90,8 +90,8 @@ include("includes/config.php");
 
 
         </div>
+       
     </main>
-
     <footer>
         <?php
         include("includes/footer.php");
@@ -100,6 +100,7 @@ include("includes/config.php");
 
 
     <script src=js/js.js></script>
+   
 </body>
 
 </html>

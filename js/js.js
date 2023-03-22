@@ -31,3 +31,8 @@ function openCity(evt, infotoggle) {
 
     }
   }
+
+  // function CookieBtn() {
+  //   let cookieEl = document.getElementById("cookie");
+  //   cookieEl.remove();
+  // }

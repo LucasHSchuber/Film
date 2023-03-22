@@ -328,15 +328,17 @@ picture img {
     line-height: 4em;
     height: 4em;
 }
-.sticky-createpost a{
+.sticky-createpost span{
     color:rgb(215, 215, 215);
 }
 .sticky-createpost:hover{
     background-color: rgb(56, 56, 56);
     transition: 0.3s ease;
     color:rgb(241, 241, 241);
+    text-decoration: none;
+
 }
-.sticky-createpost a:hover{
+.sticky-createpost span:hover{
     color:rgb(233, 233, 233);
     text-decoration: none;
 }
@@ -739,6 +741,57 @@ picture img {
 
 
 
+
+/* cookie */
+/* .cookie-wrapper{
+    background-color: #0d0d0d;
+    border-top: 0.5px solid rgb(183, 183, 183);
+    color:white;
+    height: 50vh;
+    width: 100%;
+    position: sticky;
+    z-index: 2;
+    bottom:0;
+    right:0;
+    display: flex;
+    column-gap: 5em;
+    text-align: center;
+    padding-top: 5em;
+    justify-content: center;
+
+}
+.cookie-box-left{
+    max-width: 40%;
+}
+.cookie-btn{
+    background-color: #be0909;
+    border: 2px solid transparent;
+    color: rgb(255, 255, 255);
+    font-size: 1.4em;
+    font-weight: 500;
+    padding: 0.5em 2em;
+    border-radius: 0;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid#be0909;
+    margin-top:1em;
+}
+
+
+.cookie-btn:focus {
+    outline: none;
+}
+
+.cookie-btn:hover {
+    transition: 0.3s ease;
+    background-color: #d40000;
+    color: rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 2px;
+    box-shadow: none;
+    text-decoration: none;
+} */
 
 
 

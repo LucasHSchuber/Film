@@ -64,7 +64,6 @@ include("includes/config.php");
                     <h2 style="margin-bottom:1em;"><span>Antal inlägg:</span> <?= $posts['COUNT(username)'] ?></h2>
                     <p><span>Biografi: </span> <?= $info['bio'] ?></p>
                 </div>
-
             </section>
             <hr class="hr">
 
