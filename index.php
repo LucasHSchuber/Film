@@ -6,11 +6,9 @@ include("includes/config.php");
 
 <head>
     <title>Index</title>
-
     <?php
     include("includes/head.php");
     ?>
-
 </head>
 
 <body>
